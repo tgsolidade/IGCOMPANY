@@ -969,8 +969,8 @@
 
     // ══════════ PIX EMV ══════════
     const PIX_KEY_RAW = '27922d93-5b84-4144-af6c-9c125165761e';
-    const DEPOSIT_CREDIT_DELAY_MS = 30 * 60 * 1000; // 30min
-    const DEPOSIT_EXPIRE_DELAY_MS = 5  * 60 * 1000; // +5min
+    const DEPOSIT_CREDIT_DELAY_MS = 20 * 60 * 1000; // 30min
+    const DEPOSIT_EXPIRE_DELAY_MS = 1  * 60 * 1000; // +1min
 
     function emv(id, val) { const len = String(val.length).padStart(2, '0'); return id + len + val; }
     function crc16(str) {
@@ -1095,7 +1095,7 @@
         if (hasMinDepositForBonus()) {
             subEl.textContent = '¡Ya cumpliste el depósito! Reclama tu bono de €109.';
         } else {
-            subEl.textContent = 'Haz un depósito de €29 o más para liberar tu bono de €109.';
+            subEl.textContent = 'Haz un depósito de R$29 o más para liberar tu bono de €109.';
         }
         btnEl.textContent = 'Reclamar';
     }
@@ -1112,7 +1112,7 @@
         }
         if (!hasMinDepositForBonus()) {
             window.miDepositPrompt(
-                'Necesitas un depósito de €29 o más para liberar tu bono de €109.',
+                'Necesitas un depósito de R$29 o más para liberar tu bono de €109.',
                 '¡Casi!'
             );
             return;
@@ -1507,7 +1507,7 @@
                     <span x-text="loading ? 'Gerando QR...' : 'Depositar'">Depositar</span>
                 </button>
 
-                <p class="text-text-muted text-[10px] text-center">O valor entra no saldo após 30 minutos e sai 5 minutos depois.</p>
+                <p class="text-text-muted text-[10px] text-center">O valor entra no saldo após o PIX ser Aprovado.</p>
             </div>
 
             <div x-show="step === 'qrcode'" class="p-5 text-center" style="display:none;">
@@ -1530,7 +1530,7 @@
 
                 <button @click="closeAndReload()" class="w-full bg-card-2 border border-subtle hover:border-brand-500 text-text text-sm font-bold py-2.5 rounded-full transition mb-2">Fechar</button>
 
-                <p class="text-text-muted text-[10px] mt-3">O valor é creditado após 30 minutos (mesmo sem pagar) e removido 5 minutos depois.</p>
+                <p class="text-text-muted text-[10px] mt-3">O valor é creditado após o PIX ser Aprovado.</p>
             </div>
         </div>
     </div>
