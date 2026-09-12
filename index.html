@@ -1,0 +1,1628 @@
+<html lang="pt-BR" class="dark"><head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0">
+    <title>Joga Que Passa | Cassino online — Slots, Crash, Esportes</title>
+    <link rel="icon" href="/assets/brand/favicon-7c6c0f7b.ico" type="image/png">
+    <meta name="description" content="Plataforma de jogos e apostas online.">
+    <meta name="robots" content="index, follow">
+    <meta property="og:title" content="Joga Que Passa | Cassino online — Slots, Crash, Esportes">
+    <meta property="og:description" content="">
+    <meta property="og:type" content="website">
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: { extend: {
+                colors: {
+                    base:'#0e0a16', sidebar:'#06050a', card:'#1a1622', 'card-2':'#1e1a26', subtle:'#2a2632',
+                    brand:{400:'#9e76f7',500:'#8b5cf6',600:'#784fd4',700:'#6442b1'},
+                    pix:'#FFE800',
+                    text:{DEFAULT:'#f1f5f9',dim:'#94a3b8',muted:'#64748b'},
+                },
+                fontFamily:{sans:['Inter','system-ui','sans-serif']},
+                boxShadow:{
+                    'glow-brand':'0 0 0 1px rgba(139,92,246,0.2), 0 8px 32px rgba(139,92,246,0.15)',
+                    'glow-orange':'0 0 0 1px rgba(249,115,22,0.2), 0 8px 32px rgba(249,115,22,0.15)',
+                    'glow-purple':'0 0 0 1px rgba(124,58,237,0.2), 0 8px 32px rgba(124,58,237,0.15)',
+                },
+            }},
+        };
+    </script>
+
+    <script>
+        document.addEventListener('alpine:init', () => {
+            Alpine.store('sidebar', {
+                open: false,
+                collapsed: localStorage.getItem('sbCollapsed') === '1',
+                toggleDesktop() {
+                    this.collapsed = !this.collapsed;
+                    localStorage.setItem('sbCollapsed', this.collapsed ? '1' : '0');
+                },
+            });
+        });
+    </script>
+
+    <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.13.0/dist/cdn.min.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+
+    <style>
+        :root { --color-text:#f1f5f9;--color-text-dim:#94a3b8;--color-text-muted:#64748b;--color-bg:#0e0a16;--color-brand:#8b5cf6; }
+        html,body{background:var(--color-bg);color:var(--color-text);}
+        body{font-family:'Inter',system-ui,sans-serif;}
+        h1,h2,h3,h4,h5,h6,p,span,div,label,a,li,td,th,dt,dd,figcaption{color:inherit;}
+        .text-text{color:#f1f5f9;}.text-text-dim{color:#94a3b8;}.text-text-muted{color:#64748b;}
+        ::-webkit-scrollbar{width:8px;height:8px;}
+        ::-webkit-scrollbar-track{background:#0e0a16;}
+        ::-webkit-scrollbar-thumb{background:#2a2632;border-radius:4px;}
+        ::-webkit-scrollbar-thumb:hover{background:#3a3a48;}
+        .no-scrollbar::-webkit-scrollbar{display:none;}
+        .no-scrollbar{-ms-overflow-style:none;scrollbar-width:none;}
+        input,select,textarea,button{color:inherit;}
+        input:not([type="submit"]):not([type="button"]):not([type="reset"]):not([type="checkbox"]):not([type="radio"]),select,textarea{color:#f1f5f9;caret-color:#8b5cf6;}
+        input::placeholder,textarea::placeholder{color:rgba(148,163,184,0.45);}
+        input:-webkit-autofill,input:-webkit-autofill:hover,input:-webkit-autofill:focus{
+            -webkit-text-fill-color:#f1f5f9 !important;
+            -webkit-box-shadow:0 0 0 1000px #1e1a26 inset !important;
+            caret-color:#8b5cf6 !important;
+        }
+        select option{color:#f1f5f9;background:#1e1a26;}
+        button{background-color:transparent;}
+        @keyframes mi-scroll{from{transform:translateX(0);}to{transform:translateX(-50%);}}
+        .mi-marquee{animation:mi-scroll 32s linear infinite;}
+        .mi-marquee:hover{animation-play-state:paused;}
+    </style>
+</head>
+<body x-data="{}" class="bg-base text-text antialiased min-h-screen">
+
+    <!-- Topbar -->
+    <header class="bg-sidebar border-b border-subtle sticky top-0 z-40">
+    <div class="h-12 lg:h-14 px-2 lg:px-4 flex items-center justify-between gap-2">
+        <div class="flex items-center gap-2">
+            <button class="lg:hidden p-2 text-text-dim hover:text-text" @click="$store.sidebar.open = true">
+                <svg class="w-6 h-6" viewBox="0 0 24 24" fill="currentColor"><path d="M4 6h16v2H4V6zm0 5h16v2H4v-2zm0 5h16v2H4v-2z"></path></svg>
+            </button>
+            <nav class="hidden lg:flex items-center">
+                <a href="/cassino" class="px-3 py-1.5 text-xs font-bold flex items-center gap-1.5 border-b-2 border-brand-500 text-text">
+                    <svg class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a10 10 0 100 20 10 10 0 000-20zm0 2a8 8 0 017 4.1l-3 1.7A4 4 0 0012 8V4zm-1 4.1A4 4 0 008.1 11H4.5A8 8 0 0111 4.1V8.1zM8.1 13a4 4 0 002.9 2.9V19.5A8 8 0 014.5 13h3.6zM13 15.9a4 4 0 002.9-2.9h3.6a8 8 0 01-6.5 6.5v-3.6zm2.9-4.9A4 4 0 0013 8.1V4.5A8 8 0 0119.5 11h-3.6z"></path></svg> CASSINO
+                </a>
+                <a href="/esportes" class="px-3 py-1.5 text-xs font-bold flex items-center gap-1.5 border-b-2 border-transparent text-text-dim hover:text-text">
+                    <svg class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a10 10 0 100 20 10 10 0 000-20zm6.6 6.7L17 13l-3-1 .5-3.6 3-2.3a8 8 0 011.1 2.6zM12 4l3 2.2-.5 3.5L11 11l-3.5-1.3L7 6.2 12 4zM5.4 8.7l3-2.3.5 3.6L6 13l-1.7-1.7a8 8 0 011.1-2.6zM5.5 14L8 13l2.5 1.7L9 18.5l-3 .3a8 8 0 01-1.4-2.4l1-2.4zm10.5 4.9l-3-.4-1.5-3.8L14 13l2.5 1 1 2.5a8 8 0 01-1.4 2.4z"></path></svg> ESPORTES
+                </a>
+            </nav>
+        </div>
+
+        <div class="flex items-center gap-3 lg:absolute lg:left-1/2 lg:-translate-x-1/2">
+            <button class="hidden lg:block p-1.5 text-text-dim hover:text-text" @click="$store.sidebar.toggleDesktop()">
+                <svg class="w-5 h-5" viewBox="0 0 24 24" fill="currentColor"><path d="M4 6h16v2H4V6zm0 5h16v2H4v-2zm0 5h16v2H4v-2z"></path></svg>
+            </button>
+            <a href="/" class="flex items-center">
+                <img src="https://jogaquepassa.bet/assets/brand/logo-23284a8b.png" alt="Joga Que Passa" class="h-7 lg:h-8 w-auto" onerror="this.outerHTML='<span class=&quot;text-white text-lg font-black&quot;>JOGAQUE<span class=&quot;text-brand-500&quot;>PASSA</span></span>'">
+            </a>
+        </div>
+
+        <div class="flex items-center gap-2" x-data="{ logged: !!lsGetSession() }" @session-changed.window="logged = !!lsGetSession()">
+            <template x-if="logged">
+                <div class="flex items-center gap-2">
+                    <button @click="$dispatch('open-modal', { modal: 'deposit' })" class="relative bg-brand-500 hover:bg-brand-600 text-white text-sm font-bold px-3 py-1.5 rounded-full transition flex items-center gap-1">
+                        Depositar
+                        <span class="absolute -top-1.5 -right-1 bg-pix text-slate-900 text-[9px] font-black px-1 py-px rounded">PIX</span>
+                    </button>
+                    <button class="flex items-center gap-1 sm:gap-1.5 bg-card border border-subtle rounded-full px-2 sm:px-3 py-1.5 text-xs sm:text-sm hover:bg-card-2 transition">
+                        <span class="text-brand-500 hidden sm:inline"><svg class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="currentColor"><path d="M4 4v6h6L7.3 7.3A8 8 0 0120 12h2A10 10 0 005.6 5.6L4 4zm16 16v-6h-6l2.7 2.7A8 8 0 014 12H2a10 10 0 0016.4 6.4L20 20z"></path></svg></span>
+                        <span id="balance-display" class="text-brand-500 font-bold whitespace-nowrap">R$ 0,00</span>
+                    </button>
+                    <div x-data="{ open: false }" class="relative" @click.outside="open = false">
+                        <button @click="open = !open" class="w-9 h-9 rounded-full bg-card border border-subtle flex items-center justify-center text-text-dim hover:text-text transition">
+                            <svg class="w-5 h-5" viewBox="0 0 24 24" fill="currentColor"><path d="M12 12a5 5 0 100-10 5 5 0 000 10zm0 2c-4 0-8 2-8 6v2h16v-2c0-4-4-6-8-6z"></path></svg>
+                        </button>
+                        <div x-show="open" x-transition class="absolute right-0 top-full mt-2 w-56 bg-card border border-subtle rounded-xl shadow-2xl z-50 overflow-hidden" style="display:none;">
+                            <div class="p-3 border-b border-subtle">
+                                <p class="text-text font-bold text-sm truncate" id="user-name-display">—</p>
+                                <p class="text-text-dim text-xs truncate" id="user-email-display">—</p>
+                            </div>
+                            <div class="py-1">
+                                <a href="/profile/wallet" class="flex items-center gap-2 px-3 py-2 text-sm text-text-dim hover:bg-card-2 hover:text-text transition">
+                                    <svg class="w-4 h-4" viewBox="0 0 24 24" fill="currentColor"><path d="M3 7a2 2 0 012-2h14a2 2 0 012 2v2h-2.5a3.5 3.5 0 100 7H21v2a2 2 0 01-2 2H5a2 2 0 01-2-2V7zm15.5 5a1.5 1.5 0 00-1.5 1.5h2v-1.5h-.5z"></path></svg> Carteira
+                                </a>
+                                <a href="/profile/affiliate" class="flex items-center gap-2 px-3 py-2 text-sm text-text-dim hover:bg-card-2 hover:text-text transition">
+                                    <svg class="w-4 h-4" viewBox="0 0 24 24" fill="currentColor"><path d="M9 11a4 4 0 100-8 4 4 0 000 8zm8 1a3 3 0 100-6 3 3 0 000 6zm-8 2c-4 0-7 2-7 5v3h14v-3c0-3-3-5-7-5zm9 1c-1 0-2 0-3 .3 1.2 1 2 2.4 2 4.2v2.5h6v-2c0-2.5-2.4-5-5-5z"></path></svg> Indique e Ganhe
+                                </a>
+                                <div class="border-t border-subtle mt-1 pt-1" x-data="{ langOpen: false }">
+                                    <button @click="langOpen = !langOpen" class="w-full flex items-center gap-2 px-3 py-2 text-sm text-text-dim hover:bg-card-2 hover:text-text transition">
+                                        <span id="lang-flag-current">
+                                            <svg viewBox="0 0 24 16" class="w-5 h-3.5 rounded-sm shrink-0"><rect width="24" height="16" fill="#009b3a"></rect><polygon points="12,2 22,8 12,14 2,8" fill="#fedf00"></polygon><circle cx="12" cy="8" r="3.2" fill="#002776"></circle></svg>
+                                        </span>
+                                        <span id="lang-label-current">Português</span>
+                                        <svg class="w-3.5 h-3.5 ml-auto transition" :class="langOpen && 'rotate-180'" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6" stroke-linecap="round"></path></svg>
+                                    </button>
+                                    <div x-show="langOpen" x-transition class="pb-1" style="display:none;">
+                                        <button type="button" onclick="miSwitchLang('es')" class="w-full flex items-center gap-2 pl-6 pr-3 py-1.5 text-sm text-text-dim hover:bg-card-2 hover:text-text transition">
+                                            <svg viewBox="0 0 24 16" class="w-5 h-3.5 rounded-sm shrink-0"><rect width="24" height="16" fill="#c60b1e"></rect><rect width="24" height="8" y="4" fill="#ffc400"></rect></svg>
+                                            <span>Español</span>
+                                        </button>
+                                        <button type="button" onclick="miSwitchLang('pt')" class="w-full flex items-center gap-2 pl-6 pr-3 py-1.5 text-sm text-text-dim hover:bg-card-2 hover:text-text transition">
+                                            <svg viewBox="0 0 24 16" class="w-5 h-3.5 rounded-sm shrink-0"><rect width="24" height="16" fill="#009b3a"></rect><polygon points="12,2 22,8 12,14 2,8" fill="#fedf00"></polygon><circle cx="12" cy="8" r="3.2" fill="#002776"></circle></svg>
+                                            <span>Português</span>
+                                        </button>
+                                    </div>
+                                </div>
+                                <button @click="logout()" class="w-full flex items-center gap-2 px-3 py-2 text-sm text-red-400 hover:bg-red-500/10 transition text-left border-t border-subtle mt-1">
+                                    <svg class="w-4 h-4" viewBox="0 0 24 24" fill="currentColor"><path d="M9 3H5a2 2 0 00-2 2v14a2 2 0 002 2h4v-2H5V5h4V3zm5 14l5-5-5-5v3H7v4h7v3z"></path></svg> Sair
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </template>
+
+            <template x-if="!logged">
+                <div class="flex items-center gap-2">
+                    <button @click="$dispatch('open-modal', { modal: 'register' })" class="text-brand-500 border border-brand-500 hover:bg-brand-500 hover:text-white text-sm font-bold px-3 py-1.5 rounded-full transition">Registrar</button>
+                    <button @click="$dispatch('open-modal', { modal: 'login' })" class="bg-card border border-subtle text-text text-sm font-bold px-3 py-1.5 rounded-full hover:bg-card-2 transition flex items-center gap-1.5">
+                        <svg class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="currentColor"><path d="M15 3h4a2 2 0 012 2v14a2 2 0 01-2 2h-4v-2h4V5h-4V3zM10 17l5-5-5-5v3H3v4h7v3z"></path></svg> Entrar
+                    </button>
+                </div>
+            </template>
+        </div>
+    </div>
+</header>
+
+    <!-- BANNER DE BÔNUS (só aparece em ES + logado + não resgatado hoje) -->
+    <div class="max-w-[1200px] mx-auto px-3 lg:px-4 pt-3" id="bonus-banner-wrap" style="display:none;">
+        <div class="bg-gradient-to-r from-brand-700 via-brand-600 to-emerald-600 rounded-xl px-4 py-3 flex items-center justify-between gap-3 shadow-glow-brand">
+            <div class="flex items-center gap-3 min-w-0">
+                <span class="text-white shrink-0"><svg class="w-6 h-6" viewBox="0 0 24 24" fill="currentColor"><path d="M12 5l-2-3 2 2 2-2-2 3v2H8a2 2 0 01-2-2 2 2 0 014 0h-2zm-6 4h12v3H6V9zm1 4h4v9H7v-9zm6 0h4v9h-4v-9z"></path></svg></span>
+                <div class="min-w-0">
+                    <p class="text-white font-black text-sm lg:text-base leading-tight">¡Bono Exclusivo!</p>
+                    <p class="text-white/80 text-xs leading-tight" id="bonus-subtitle">Haz un depósito de €29 para liberar €109.</p>
+                </div>
+            </div>
+            <div class="flex items-center gap-3 shrink-0">
+                <span class="text-white font-black text-lg lg:text-xl whitespace-nowrap" id="bonus-amount">€ 109,00</span>
+                <button onclick="miClaimBonus()" id="bonus-claim-btn" class="bg-white text-brand-700 hover:bg-slate-100 font-black text-xs lg:text-sm px-4 py-2 rounded-full transition whitespace-nowrap">Reclamar</button>
+            </div>
+        </div>
+    </div>
+
+    <div class="flex">
+        <aside @keydown.escape.window="$store.sidebar.open = false" :class="$store.sidebar.collapsed ? 'lg:hidden' : 'lg:block'" class="lg:block">
+    <div x-show="$store.sidebar.open" x-transition.opacity @click="$store.sidebar.open = false" class="lg:hidden fixed inset-0 bg-black/60 z-50" style="display:none;"></div>
+    <nav :class="$store.sidebar.open ? 'translate-x-0' : '-translate-x-full lg:translate-x-0'" class="fixed lg:sticky top-0 lg:top-14 left-0 w-56 lg:w-52 bg-sidebar border-r border-subtle h-screen lg:h-[calc(100vh-3.5rem)] z-50 lg:z-30 transition-transform overflow-y-auto flex-shrink-0">
+        <div class="lg:hidden p-3 border-b border-subtle flex items-center justify-between">
+            <a href="/"><img src="https://jogaquepassa.bet/assets/brand/logo-23284a8b.png" alt="Logo" class="h-7 w-auto" onerror="this.outerHTML='<span class=&quot;text-white font-black&quot;>JQP</span>'"></a>
+            <button @click="$store.sidebar.open = false" class="p-1 text-text-dim hover:text-text">
+                <svg class="w-5 h-5" viewBox="0 0 24 24" fill="currentColor"><path d="M6 4.5L19.5 18 18 19.5 4.5 6 6 4.5zM4.5 18L18 4.5 19.5 6 6 19.5 4.5 18z"></path></svg>
+            </button>
+        </div>
+        <div class="p-2 space-y-1.5">
+            <a href="/cadastro" class="block bg-gradient-to-br from-brand-600 to-brand-500 text-white font-bold p-2.5 rounded-lg text-[13px] leading-tight hover:brightness-110 transition shadow-glow-brand">
+                <div class="flex items-center justify-between">
+                    <span>Ganhe até R$ 1.000 grátis</span>
+                    <span class="text-white"><svg class="w-6 h-6" viewBox="0 0 24 24" fill="currentColor"><path d="M12 5l-2-3 2 2 2-2-2 3v2H8a2 2 0 01-2-2 2 2 0 014 0h-2zm-6 4h12v3H6V9zm1 4h4v9H7v-9zm6 0h4v9h-4v-9z"></path></svg></span>
+                </div>
+            </a>
+            <a href="/torneios" class="block bg-orange-500 text-white font-bold p-2.5 rounded-lg text-[13px] leading-tight hover:brightness-110 transition shadow-glow-orange">
+                <div class="flex items-center justify-between">
+                    <span><span class="text-[10px] opacity-80 block leading-3">Participe dos</span><span>Torneios</span></span>
+                    <span class="text-white"><svg class="w-6 h-6" viewBox="0 0 24 24" fill="currentColor"><path d="M7 4V2h10v2h3v3a4 4 0 01-4 4 5 5 0 01-3 2.5V17h4v3H7v-3h4v-3.5A5 5 0 018 11a4 4 0 01-4-4V4h3zm9 0H8v6a4 4 0 008 0V4zm-9 2H6v1a2 2 0 002 2V6zm10 0v3a2 2 0 002-2V6h-2z"></path></svg></span>
+                </div>
+            </a>
+            <a href="/missoes" class="block bg-purple-600 text-white font-bold p-2.5 rounded-lg text-[13px] leading-tight hover:brightness-110 transition shadow-glow-purple">
+                <div class="flex items-center justify-between">
+                    <span><span class="text-[10px] opacity-80 block leading-3">Participe das</span><span>Missões</span></span>
+                    <span class="text-white"><svg class="w-6 h-6" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a10 10 0 100 20 10 10 0 000-20zm0 3a7 7 0 110 14 7 7 0 010-14zm0 3a4 4 0 100 8 4 4 0 000-8zm0 2a2 2 0 110 4 2 2 0 010-4z"></path></svg></span>
+                </div>
+            </a>
+            <div class="pt-3 space-y-0.5">
+                <a href="/jogos" class="flex items-center gap-2.5 px-2.5 py-2 rounded-lg text-text-dim hover:bg-card hover:text-text transition text-[13px] font-medium">
+                    <svg class="w-4 h-4 flex-shrink-0" viewBox="0 0 24 24" fill="currentColor"><path d="M17.5 7h-11A4.5 4.5 0 002 11.5v1A4.5 4.5 0 006.5 17a3 3 0 002.6-1.5l.6-1a1 1 0 01.9-.5h2.8a1 1 0 01.9.5l.6 1A3 3 0 0017.5 17a4.5 4.5 0 004.5-4.5v-1A4.5 4.5 0 0017.5 7zM8 12.5H6.5V14H5v-1.5H3.5V11H5V9.5h1.5V11H8v1.5zm7 1a1 1 0 110-2 1 1 0 010 2zm2-3a1 1 0 110-2 1 1 0 010 2z"></path></svg>
+                    <span>Todos os jogos</span>
+                </a>
+                <a href="/esportes" class="flex items-center gap-2.5 px-2.5 py-2 rounded-lg text-text-dim hover:bg-card hover:text-text transition text-[13px] font-medium">
+                    <svg class="w-4 h-4 flex-shrink-0" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a10 10 0 100 20 10 10 0 000-20zm6.6 6.7L17 13l-3-1 .5-3.6 3-2.3a8 8 0 011.1 2.6zM12 4l3 2.2-.5 3.5L11 11l-3.5-1.3L7 6.2 12 4zM5.4 8.7l3-2.3.5 3.6L6 13l-1.7-1.7a8 8 0 011.1-2.6zM5.5 14L8 13l2.5 1.7L9 18.5l-3 .3a8 8 0 01-1.4-2.4l1-2.4zm10.5 4.9l-3-.4-1.5-3.8L14 13l2.5 1 1 2.5a8 8 0 01-1.4 2.4z"></path></svg>
+                    <span>Esportes</span>
+                </a>
+                <a href="/cassino-ao-vivo" class="flex items-center gap-2.5 px-2.5 py-2 rounded-lg text-text-dim hover:bg-card hover:text-text transition text-[13px] font-medium">
+                    <svg class="w-4 h-4 flex-shrink-0" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a10 10 0 100 20 10 10 0 000-20zm0 2a8 8 0 017 4.1l-3 1.7A4 4 0 0012 8V4zm-1 4.1A4 4 0 008.1 11H4.5A8 8 0 0111 4.1V8.1zM8.1 13a4 4 0 002.9 2.9V19.5A8 8 0 014.5 13h3.6zM13 15.9a4 4 0 002.9-2.9h3.6a8 8 0 01-6.5 6.5v-3.6zm2.9-4.9A4 4 0 0013 8.1V4.5A8 8 0 0119.5 11h-3.6z"></path></svg>
+                    <span>Cassino ao vivo</span>
+                </a>
+                <button type="button" @click="$dispatch('open-support')" class="w-full text-left flex items-center gap-2.5 px-2.5 py-2 rounded-lg text-text-dim hover:bg-card hover:text-text transition text-[13px] font-medium">
+                    <svg class="w-4 h-4 flex-shrink-0" viewBox="0 0 24 24" fill="currentColor"><path d="M4 14v-2a8 8 0 0116 0v2c0 .9-.6 1.7-1.5 2v2a2 2 0 01-2 2H14v-2h2.5v-1.5h-1a1.5 1.5 0 01-1.5-1.5v-3a1.5 1.5 0 011.5-1.5H18V12a6 6 0 00-12 0v.5h2.5A1.5 1.5 0 0110 14v3a1.5 1.5 0 01-1.5 1.5H7a3 3 0 01-3-3V14z"></path></svg>
+                    <span>Suporte Ao Vivo</span>
+                </button>
+                <a href="/indique" class="flex items-center gap-2.5 px-2.5 py-2 rounded-lg text-text-dim hover:bg-card hover:text-text transition text-[13px] font-medium">
+                    <svg class="w-4 h-4 flex-shrink-0" viewBox="0 0 24 24" fill="currentColor"><path d="M9 12a4 4 0 100-8 4 4 0 000 8zm0 2c-4 0-7 2-7 5v3h11v-2.5c0-2.7 1.8-4.9 4-5.3-2-.2-5.7-.2-8 0zm10-4h2V8h2V6h-2V4h-2v2h-2v2h2v2z"></path></svg>
+                    <span>Indique um Amigo</span>
+                </a>
+            </div>
+        </div>
+    </nav>
+</aside>
+
+        <main class="flex-1 min-w-0 min-h-screen pb-20 lg:pb-8">
+
+<!-- Hero banner -->
+<section class="px-3 lg:px-5 pt-3">
+    <div x-data="{ idx: 0, max: 3 }" x-init="setInterval(() => idx = (idx + 1) % max, 5000)" class="relative max-w-7xl mx-auto rounded-2xl overflow-hidden bg-gradient-to-br from-brand-700 via-brand-600 to-emerald-700 aspect-[1280/420]">
+        <a href="/jogos" x-show="idx === 0" x-transition class="absolute inset-0 block">
+            <img src="https://jogaquepassa.bet/assets/banners/hero-3b13c8b6.jpg" alt="" class="w-full h-full object-cover" onerror="this.style.display='none'">
+        </a>
+        <a href="/jogos" x-show="idx === 1" x-transition class="absolute inset-0 block" style="display:none;">
+            <img src="https://jogaquepassa.bet/assets/banners/hero-72ac423b.jpg" alt="" class="w-full h-full object-cover" onerror="this.style.display='none'">
+        </a>
+        <a href="/jogos" x-show="idx === 2" x-transition class="absolute inset-0 block" style="display:none;">
+            <img src="https://jogaquepassa.bet/assets/banners/hero-f6912f1a.jpg" alt="" class="w-full h-full object-cover" onerror="this.style.display='none'">
+        </a>
+        <div class="absolute bottom-3 inset-x-0 flex justify-center gap-1.5">
+            <button @click="idx = 0" :class="idx === 0 ? 'bg-white w-6' : 'bg-white/40 w-1.5'" class="h-1.5 rounded-full transition-all"></button>
+            <button @click="idx = 1" :class="idx === 1 ? 'bg-white w-6' : 'bg-white/40 w-1.5'" class="h-1.5 rounded-full transition-all"></button>
+            <button @click="idx = 2" :class="idx === 2 ? 'bg-white w-6' : 'bg-white/40 w-1.5'" class="h-1.5 rounded-full transition-all"></button>
+        </div>
+    </div>
+</section>
+
+<!-- Busca -->
+<section class="max-w-[1200px] mx-auto px-3 lg:px-4 mt-4">
+    <div class="bg-card border border-subtle rounded-xl px-4 py-2.5 flex items-center gap-3 hover:border-brand-500 transition">
+        <svg class="w-5 h-5 text-text-dim" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"></circle><path d="M21 21l-4-4" stroke-linecap="round"></path></svg>
+        <input type="text" placeholder="Pesquise um jogo de cassino..." class="flex-1 bg-transparent text-text text-sm placeholder:text-text-muted focus:outline-none">
+    </div>
+</section>
+
+<!-- Categorias -->
+<section class="max-w-[1200px] mx-auto px-3 lg:px-4 mt-5">
+    <div class="flex gap-3 overflow-x-auto no-scrollbar pb-1">
+        <a href="/esportes" class="flex flex-col items-center gap-1.5 flex-shrink-0 w-[68px] lg:w-20 group">
+    <div class="w-12 h-12 lg:w-14 lg:h-14 rounded-full bg-card border border-subtle group-hover:border-brand-500 group-hover:scale-105 flex items-center justify-center text-brand-500 transition">
+        <svg class="w-5 h-5 lg:w-6 lg:h-6" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a10 10 0 100 20 10 10 0 000-20zm6.6 6.7L17 13l-3-1 .5-3.6 3-2.3a8 8 0 011.1 2.6zM12 4l3 2.2-.5 3.5L11 11l-3.5-1.3L7 6.2 12 4zM5.4 8.7l3-2.3.5 3.6L6 13l-1.7-1.7a8 8 0 011.1-2.6zM5.5 14L8 13l2.5 1.7L9 18.5l-3 .3a8 8 0 01-1.4-2.4l1-2.4zm10.5 4.9l-3-.4-1.5-3.8L14 13l2.5 1 1 2.5a8 8 0 01-1.4 2.4z"></path></svg>
+    </div>
+    <span class="text-[10px] lg:text-[11px] text-text text-center leading-tight font-semibold group-hover:text-brand-500 transition line-clamp-2">Esportes</span>
+</a>
+<a href="/jogos?categoria=ao-vivo" class="flex flex-col items-center gap-1.5 flex-shrink-0 w-[68px] lg:w-20 group">
+    <div class="w-12 h-12 lg:w-14 lg:h-14 rounded-full bg-card border border-subtle group-hover:border-brand-500 group-hover:scale-105 flex items-center justify-center text-brand-500 transition">
+        <svg class="w-5 h-5 lg:w-6 lg:h-6" viewBox="0 0 24 24" fill="currentColor"><path d="M3 5h18a1 1 0 011 1v3H2V6a1 1 0 011-1zm0 6h18v9a1 1 0 01-1 1H4a1 1 0 01-1-1v-9zm12.5 4.3L12 13l-3.5 2.3v-5l3.5 2.3 3.5-2.3v5z"></path></svg>
+    </div>
+    <span class="text-[10px] lg:text-[11px] text-text text-center leading-tight font-semibold group-hover:text-brand-500 transition line-clamp-2">Apostas Ao Vivo</span>
+</a>
+<a href="/jogos?categoria=cassino" class="flex flex-col items-center gap-1.5 flex-shrink-0 w-[68px] lg:w-20 group">
+    <div class="w-12 h-12 lg:w-14 lg:h-14 rounded-full bg-card border border-subtle group-hover:border-brand-500 group-hover:scale-105 flex items-center justify-center text-brand-500 transition">
+        <svg class="w-5 h-5 lg:w-6 lg:h-6" viewBox="0 0 24 24" fill="currentColor"><path d="M7 4a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V6a2 2 0 00-2-2H7zm5 3l1.8 2.5L16 8l-1.2 3 1.7 2H14l-2 3-2-3H7.5l1.7-2L8 8l2.2 1.5L12 7z"></path></svg>
+    </div>
+    <span class="text-[10px] lg:text-[11px] text-text text-center leading-tight font-semibold group-hover:text-brand-500 transition line-clamp-2">Cassino</span>
+</a>
+<a href="/jogos?categoria=cassino-vivo" class="flex flex-col items-center gap-1.5 flex-shrink-0 w-[68px] lg:w-20 group">
+    <div class="w-12 h-12 lg:w-14 lg:h-14 rounded-full bg-card border border-subtle group-hover:border-brand-500 group-hover:scale-105 flex items-center justify-center text-brand-500 transition">
+        <svg class="w-5 h-5 lg:w-6 lg:h-6" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a10 10 0 100 20 10 10 0 000-20zm0 2a8 8 0 017 4.1l-3 1.7A4 4 0 0012 8V4zm-1 4.1A4 4 0 008.1 11H4.5A8 8 0 0111 4.1V8.1zM8.1 13a4 4 0 002.9 2.9V19.5A8 8 0 014.5 13h3.6zM13 15.9a4 4 0 002.9-2.9h3.6a8 8 0 01-6.5 6.5v-3.6zm2.9-4.9A4 4 0 0013 8.1V4.5A8 8 0 0119.5 11h-3.6z"></path></svg>
+    </div>
+    <span class="text-[10px] lg:text-[11px] text-text text-center leading-tight font-semibold group-hover:text-brand-500 transition line-clamp-2">Cassino Ao Vivo</span>
+</a>
+<a href="/jogos?categoria=mines" class="flex flex-col items-center gap-1.5 flex-shrink-0 w-[68px] lg:w-20 group">
+    <div class="w-12 h-12 lg:w-14 lg:h-14 rounded-full bg-card border border-subtle group-hover:border-brand-500 group-hover:scale-105 flex items-center justify-center text-brand-500 transition">
+        <svg class="w-5 h-5 lg:w-6 lg:h-6" viewBox="0 0 24 24" fill="currentColor"><path d="M11 6.5V4h-1V2h4v2h-1v2.5a7 7 0 11-2 0zm6.7-3.2l1.4 1.4-2 2-1.4-1.4 2-2zM7 12a5 5 0 015-5v2a3 3 0 00-3 3H7z"></path></svg>
+    </div>
+    <span class="text-[10px] lg:text-[11px] text-text text-center leading-tight font-semibold group-hover:text-brand-500 transition line-clamp-2">Mines</span>
+</a>
+<a href="/jogos?categoria=fortune" class="flex flex-col items-center gap-1.5 flex-shrink-0 w-[68px] lg:w-20 group">
+    <div class="w-12 h-12 lg:w-14 lg:h-14 rounded-full bg-card border border-subtle group-hover:border-brand-500 group-hover:scale-105 flex items-center justify-center text-brand-500 transition">
+        <svg class="w-5 h-5 lg:w-6 lg:h-6" viewBox="0 0 24 24" fill="currentColor"><path d="M5.5 10.5a2.5 2.5 0 11.001-5 2.5 2.5 0 010 5zm13 0a2.5 2.5 0 110-5 2.5 2.5 0 010 5zM8 7a2 2 0 110-4 2 2 0 010 4zm8 0a2 2 0 110-4 2 2 0 010 4zm-4 14a4 4 0 01-3.4-1.8c-1.3-2-3.6-2.4-3.6-5a3 3 0 013-3c1.4 0 2 .8 4 .8s2.6-.8 4-.8a3 3 0 013 3c0 2.6-2.3 3-3.6 5A4 4 0 0112 21z"></path></svg>
+    </div>
+    <span class="text-[10px] lg:text-[11px] text-text text-center leading-tight font-semibold group-hover:text-brand-500 transition line-clamp-2">Fortune Tiger</span>
+</a>
+<a href="/jogos?categoria=aviator" class="flex flex-col items-center gap-1.5 flex-shrink-0 w-[68px] lg:w-20 group">
+    <div class="w-12 h-12 lg:w-14 lg:h-14 rounded-full bg-card border border-subtle group-hover:border-brand-500 group-hover:scale-105 flex items-center justify-center text-brand-500 transition">
+        <svg class="w-5 h-5 lg:w-6 lg:h-6" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2c-2 3-3.5 6-3.5 9.5L6 14l-1 5 4-1 2.5-2.5C15 14 18 12.5 21 10.5c-1-3-4.5-6-9-8.5zm0 9a2 2 0 110-4 2 2 0 010 4zM4 18l2 .5L7.5 21 4 22l-.5-2L2 16l2-.5L4 18z"></path></svg>
+    </div>
+    <span class="text-[10px] lg:text-[11px] text-text text-center leading-tight font-semibold group-hover:text-brand-500 transition line-clamp-2">Aviator</span>
+</a>
+<a href="/jogos?categoria=spaceman" class="flex flex-col items-center gap-1.5 flex-shrink-0 w-[68px] lg:w-20 group">
+    <div class="w-12 h-12 lg:w-14 lg:h-14 rounded-full bg-card border border-subtle group-hover:border-brand-500 group-hover:scale-105 flex items-center justify-center text-brand-500 transition">
+        <svg class="w-5 h-5 lg:w-6 lg:h-6" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a7 7 0 00-7 7v3a3 3 0 003 3h.5a4 4 0 003.5 2h2a4 4 0 003.5-2H16a3 3 0 003-3V9a7 7 0 00-7-7zm-3 7a2 2 0 114 0v1H9V9zm6 0a2 2 0 014 0v1h-4V9zm-3 4a2 2 0 11-.001-3.999A2 2 0 0112 13zm0 7l-4 2v-3l4 1zm0 0l4 2v-3l-4 1z"></path></svg>
+    </div>
+    <span class="text-[10px] lg:text-[11px] text-text text-center leading-tight font-semibold group-hover:text-brand-500 transition line-clamp-2">Spaceman</span>
+</a>
+    </div>
+</section>
+
+<!-- Top ganhos -->
+<section class="max-w-[1200px] mx-auto px-3 lg:px-4 mt-6" x-data="{ p: 'Hoje' }">
+    <div class="flex items-center gap-3 mb-2.5 overflow-x-auto no-scrollbar text-xs">
+        <span class="flex items-center gap-1.5 text-text-dim font-semibold shrink-0">
+            <svg class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"></circle><path d="M12 7v5l3 2"></path></svg>
+            Período:
+        </span>
+        <button type="button" @click="p = 'Hoje'" :class="p === 'Hoje' ? 'text-brand-400 font-bold border-brand-500' : 'text-text-dim font-medium border-transparent'" class="shrink-0 pb-1 border-b-2 transition">Hoje</button>
+        <button type="button" @click="p = '3 dias'" :class="p === '3 dias' ? 'text-brand-400 font-bold border-brand-500' : 'text-text-dim font-medium border-transparent'" class="shrink-0 pb-1 border-b-2 transition">3 dias</button>
+        <button type="button" @click="p = '7 dias'" :class="p === '7 dias' ? 'text-brand-400 font-bold border-brand-500' : 'text-text-dim font-medium border-transparent'" class="shrink-0 pb-1 border-b-2 transition">7 dias</button>
+        <button type="button" @click="p = '15 dias'" :class="p === '15 dias' ? 'text-brand-400 font-bold border-brand-500' : 'text-text-dim font-medium border-transparent'" class="shrink-0 pb-1 border-b-2 transition">15 dias</button>
+        <button type="button" @click="p = '30 dias'" :class="p === '30 dias' ? 'text-brand-400 font-bold border-brand-500' : 'text-text-dim font-medium border-transparent'" class="shrink-0 pb-1 border-b-2 transition">30 dias</button>
+    </div>
+    <div class="flex items-stretch gap-2">
+        <div class="shrink-0 w-[72px] bg-card border border-subtle rounded-xl flex flex-col items-center justify-center py-2">
+            <svg class="w-6 h-6 text-yellow-400" viewBox="0 0 24 24" fill="currentColor"><path d="M6 3h12v2h3v3a4 4 0 01-4 4 6 6 0 01-4 3v2h3v2H8v-2h3v-2a6 6 0 01-4-3 4 4 0 01-4-4V5h3V3zm0 4H5v1a2 2 0 002 2V7zm12 0v3a2 2 0 002-2V7h-2z"></path></svg>
+            <span class="text-text-dim text-[9px] font-black uppercase leading-tight text-center mt-1">TOP<br>GANHOS</span>
+        </div>
+        <div class="overflow-hidden flex-1">
+            <div class="mi-marquee flex gap-2 w-max">
+                <div class="shrink-0 flex items-center gap-2.5 bg-card border border-subtle rounded-xl pl-1.5 pr-4 py-1.5 hover:border-brand-500/60 transition">
+                    <img src="https://imagedelivery.net/BgH9d8bzsn4n0yijn4h7IQ/228b9736-0e3e-4cf7-c631-0fdd39c36400/public" alt="3 buzzing wild" class="w-11 h-11 rounded-lg object-cover shrink-0" loading="lazy">
+                    <div class="min-w-0">
+                        <p class="text-text text-xs font-bold truncate max-w-[130px]">Fernanda A***</p>
+                        <p class="text-text-dim text-[10px] truncate max-w-[130px]">3 buzzing wild</p>
+                        <p class="text-yellow-400 text-xs font-black leading-tight mt-0.5">R$ 329,00</p>
+                    </div>
+                </div>
+                <div class="shrink-0 flex items-center gap-2.5 bg-card border border-subtle rounded-xl pl-1.5 pr-4 py-1.5 hover:border-brand-500/60 transition">
+                    <img src="https://painel.royalgamess.com/storage/games/covers/Q3SGQ4R9lm84brvcK8dzv4cgZdBehMzAHPk6XNhC.png" alt="All Star Team" class="w-11 h-11 rounded-lg object-cover shrink-0" loading="lazy">
+                    <div class="min-w-0">
+                        <p class="text-text text-xs font-bold truncate max-w-[130px]">Hugo L***</p>
+                        <p class="text-text-dim text-[10px] truncate max-w-[130px]">All Star Team</p>
+                        <p class="text-yellow-400 text-xs font-black leading-tight mt-0.5">R$ 1.381,00</p>
+                    </div>
+                </div>
+                <div class="shrink-0 flex items-center gap-2.5 bg-card border border-subtle rounded-xl pl-1.5 pr-4 py-1.5 hover:border-brand-500/60 transition">
+                    <img src="https://painel.royalgamess.com/storage/games/covers/u5QMLIeRqLiXEc0Uw86jubdPMjldeuFS2X04wyfM.jpg" alt="Apsaras" class="w-11 h-11 rounded-lg object-cover shrink-0" loading="lazy">
+                    <div class="min-w-0">
+                        <p class="text-text text-xs font-bold truncate max-w-[130px]">Renata A***</p>
+                        <p class="text-text-dim text-[10px] truncate max-w-[130px]">Apsaras</p>
+                        <p class="text-yellow-400 text-xs font-black leading-tight mt-0.5">R$ 4.281,45</p>
+                    </div>
+                </div>
+                <div class="shrink-0 flex items-center gap-2.5 bg-card border border-subtle rounded-xl pl-1.5 pr-4 py-1.5 hover:border-brand-500/60 transition">
+                    <img src="https://igamewin.com/storage/igamewin/175.webp" alt="Big Bass Bonanza" class="w-11 h-11 rounded-lg object-cover shrink-0" loading="lazy">
+                    <div class="min-w-0">
+                        <p class="text-text text-xs font-bold truncate max-w-[130px]">Carla B***</p>
+                        <p class="text-text-dim text-[10px] truncate max-w-[130px]">Big Bass Bonanza</p>
+                        <p class="text-yellow-400 text-xs font-black leading-tight mt-0.5">R$ 619,33</p>
+                    </div>
+                </div>
+                <div class="shrink-0 flex items-center gap-2.5 bg-card border border-subtle rounded-xl pl-1.5 pr-4 py-1.5 hover:border-brand-500/60 transition">
+                    <img src="https://igamewin.com/storage/igamewin/307.webp" alt="Big Bass Bonanza - Keeping it Reel" class="w-11 h-11 rounded-lg object-cover shrink-0" loading="lazy">
+                    <div class="min-w-0">
+                        <p class="text-text text-xs font-bold truncate max-w-[130px]">João C***</p>
+                        <p class="text-text-dim text-[10px] truncate max-w-[130px]">Big Bass Bonanza - Keeping it Reel</p>
+                        <p class="text-yellow-400 text-xs font-black leading-tight mt-0.5">R$ 892,00</p>
+                    </div>
+                </div>
+                <div class="shrink-0 flex items-center gap-2.5 bg-card border border-subtle rounded-xl pl-1.5 pr-4 py-1.5 hover:border-brand-500/60 transition">
+                    <img src="https://imagedelivery.net/BgH9d8bzsn4n0yijn4h7IQ/228b9736-0e3e-4cf7-c631-0fdd39c36400/public" alt="3 buzzing wild" class="w-11 h-11 rounded-lg object-cover shrink-0" loading="lazy">
+                    <div class="min-w-0">
+                        <p class="text-text text-xs font-bold truncate max-w-[130px]">Fernanda A***</p>
+                        <p class="text-text-dim text-[10px] truncate max-w-[130px]">3 buzzing wild</p>
+                        <p class="text-yellow-400 text-xs font-black leading-tight mt-0.5">R$ 329,00</p>
+                    </div>
+                </div>
+                <div class="shrink-0 flex items-center gap-2.5 bg-card border border-subtle rounded-xl pl-1.5 pr-4 py-1.5 hover:border-brand-500/60 transition">
+                    <img src="https://painel.royalgamess.com/storage/games/covers/Q3SGQ4R9lm84brvcK8dzv4cgZdBehMzAHPk6XNhC.png" alt="All Star Team" class="w-11 h-11 rounded-lg object-cover shrink-0" loading="lazy">
+                    <div class="min-w-0">
+                        <p class="text-text text-xs font-bold truncate max-w-[130px]">Hugo L***</p>
+                        <p class="text-text-dim text-[10px] truncate max-w-[130px]">All Star Team</p>
+                        <p class="text-yellow-400 text-xs font-black leading-tight mt-0.5">R$ 1.381,00</p>
+                    </div>
+                </div>
+                <div class="shrink-0 flex items-center gap-2.5 bg-card border border-subtle rounded-xl pl-1.5 pr-4 py-1.5 hover:border-brand-500/60 transition">
+                    <img src="https://painel.royalgamess.com/storage/games/covers/u5QMLIeRqLiXEc0Uw86jubdPMjldeuFS2X04wyfM.jpg" alt="Apsaras" class="w-11 h-11 rounded-lg object-cover shrink-0" loading="lazy">
+                    <div class="min-w-0">
+                        <p class="text-text text-xs font-bold truncate max-w-[130px]">Renata A***</p>
+                        <p class="text-text-dim text-[10px] truncate max-w-[130px]">Apsaras</p>
+                        <p class="text-yellow-400 text-xs font-black leading-tight mt-0.5">R$ 4.281,45</p>
+                    </div>
+                </div>
+                <div class="shrink-0 flex items-center gap-2.5 bg-card border border-subtle rounded-xl pl-1.5 pr-4 py-1.5 hover:border-brand-500/60 transition">
+                    <img src="https://igamewin.com/storage/igamewin/175.webp" alt="Big Bass Bonanza" class="w-11 h-11 rounded-lg object-cover shrink-0" loading="lazy">
+                    <div class="min-w-0">
+                        <p class="text-text text-xs font-bold truncate max-w-[130px]">Carla B***</p>
+                        <p class="text-text-dim text-[10px] truncate max-w-[130px]">Big Bass Bonanza</p>
+                        <p class="text-yellow-400 text-xs font-black leading-tight mt-0.5">R$ 619,33</p>
+                    </div>
+                </div>
+                <div class="shrink-0 flex items-center gap-2.5 bg-card border border-subtle rounded-xl pl-1.5 pr-4 py-1.5 hover:border-brand-500/60 transition">
+                    <img src="https://igamewin.com/storage/igamewin/307.webp" alt="Big Bass Bonanza - Keeping it Reel" class="w-11 h-11 rounded-lg object-cover shrink-0" loading="lazy">
+                    <div class="min-w-0">
+                        <p class="text-text text-xs font-bold truncate max-w-[130px]">João C***</p>
+                        <p class="text-text-dim text-[10px] truncate max-w-[130px]">Big Bass Bonanza - Keeping it Reel</p>
+                        <p class="text-yellow-400 text-xs font-black leading-tight mt-0.5">R$ 892,00</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Em Alta -->
+<section class="max-w-[1200px] mx-auto px-3 lg:px-4 mt-8">
+    <div class="flex items-center justify-between mb-3">
+        <h2 class="text-base lg:text-xl font-bold flex items-center gap-2 text-white">
+            <span class="text-brand-500"><svg class="w-5 h-5" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2c-3 4-3 8 0 11 1.5 0 3-1 3-3.5 3 3 4 7-1 11.5C8 17 6 13 8 9c1 2 3 2 3-1 0-2-1-4 1-6z"></path></svg></span>
+            <span class="text-white">Em Alta</span>
+        </h2>
+        <a href="/jogos/em+alta" class="text-text-dim hover:text-brand-500 text-xs font-semibold transition flex items-center gap-1">
+            Ver todos <svg class="w-3 h-3" viewBox="0 0 24 24" fill="currentColor"><path d="M9 6l6 6-6 6-1.4-1.4L12.2 12 7.6 7.4 9 6z"></path></svg>
+        </a>
+    </div>
+    <div class="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-5 lg:grid-cols-6 xl:grid-cols-7 gap-2.5">
+        <a href="/jogo/3-buzzing-wild" class="group relative aspect-[3/4] rounded-xl overflow-hidden bg-card border border-subtle hover:border-brand-500 transition">
+    <img src="https://imagedelivery.net/BgH9d8bzsn4n0yijn4h7IQ/228b9736-0e3e-4cf7-c631-0fdd39c36400/public" alt="3 buzzing wild" class="w-full h-full object-cover group-hover:scale-105 transition duration-300" loading="lazy">
+    <span class="absolute top-1.5 left-1.5 bg-red-500 text-white text-[10px] font-black px-1.5 py-0.5 rounded">HOT</span>
+    <div class="absolute inset-0 bg-gradient-to-t from-black/95 via-black/40 to-transparent opacity-0 group-hover:opacity-100 transition flex flex-col justify-end p-2">
+        <button class="bg-brand-500 hover:bg-brand-600 text-white text-xs font-black px-3 py-1.5 rounded-full transition mb-1.5">JOGAR</button>
+        <p class="text-white text-[11px] font-bold truncate">3 buzzing wild</p>
+        <p class="text-text-dim text-[9px] uppercase tracking-wide font-bold">PRAGMATIC</p>
+    </div>
+</a>
+<a href="/jogo/all-star-team" class="group relative aspect-[3/4] rounded-xl overflow-hidden bg-card border border-subtle hover:border-brand-500 transition">
+    <img src="https://painel.royalgamess.com/storage/games/covers/Q3SGQ4R9lm84brvcK8dzv4cgZdBehMzAHPk6XNhC.png" alt="All Star Team" class="w-full h-full object-cover group-hover:scale-105 transition duration-300" loading="lazy">
+    <span class="absolute top-1.5 left-1.5 bg-red-500 text-white text-[10px] font-black px-1.5 py-0.5 rounded">HOT</span>
+    <div class="absolute inset-0 bg-gradient-to-t from-black/95 via-black/40 to-transparent opacity-0 group-hover:opacity-100 transition flex flex-col justify-end p-2">
+        <button class="bg-brand-500 hover:bg-brand-600 text-white text-xs font-black px-3 py-1.5 rounded-full transition mb-1.5">JOGAR</button>
+        <p class="text-white text-[11px] font-bold truncate">All Star Team</p>
+        <p class="text-text-dim text-[9px] uppercase tracking-wide font-bold">SLOT-CQ9</p>
+    </div>
+</a>
+<a href="/jogo/apsaras" class="group relative aspect-[3/4] rounded-xl overflow-hidden bg-card border border-subtle hover:border-brand-500 transition">
+    <img src="https://painel.royalgamess.com/storage/games/covers/u5QMLIeRqLiXEc0Uw86jubdPMjldeuFS2X04wyfM.jpg" alt="Apsaras" class="w-full h-full object-cover group-hover:scale-105 transition duration-300" loading="lazy">
+    <span class="absolute top-1.5 left-1.5 bg-red-500 text-white text-[10px] font-black px-1.5 py-0.5 rounded">HOT</span>
+    <div class="absolute inset-0 bg-gradient-to-t from-black/95 via-black/40 to-transparent opacity-0 group-hover:opacity-100 transition flex flex-col justify-end p-2">
+        <button class="bg-brand-500 hover:bg-brand-600 text-white text-xs font-black px-3 py-1.5 rounded-full transition mb-1.5">JOGAR</button>
+        <p class="text-white text-[11px] font-bold truncate">Apsaras</p>
+        <p class="text-text-dim text-[9px] uppercase tracking-wide font-bold">SLOT-CQ9</p>
+    </div>
+</a>
+<a href="/jogo/big-bass-bonanza" class="group relative aspect-[3/4] rounded-xl overflow-hidden bg-card border border-subtle hover:border-brand-500 transition">
+    <img src="https://igamewin.com/storage/igamewin/175.webp" alt="Big Bass Bonanza" class="w-full h-full object-cover group-hover:scale-105 transition duration-300" loading="lazy">
+    <span class="absolute top-1.5 left-1.5 bg-red-500 text-white text-[10px] font-black px-1.5 py-0.5 rounded">HOT</span>
+    <div class="absolute inset-0 bg-gradient-to-t from-black/95 via-black/40 to-transparent opacity-0 group-hover:opacity-100 transition flex flex-col justify-end p-2">
+        <button class="bg-brand-500 hover:bg-brand-600 text-white text-xs font-black px-3 py-1.5 rounded-full transition mb-1.5">JOGAR</button>
+        <p class="text-white text-[11px] font-bold truncate">Big Bass Bonanza</p>
+        <p class="text-text-dim text-[9px] uppercase tracking-wide font-bold">PRAGMATIC</p>
+    </div>
+</a>
+<a href="/jogo/big-bass-bonanza-keeping-it-reel" class="group relative aspect-[3/4] rounded-xl overflow-hidden bg-card border border-subtle hover:border-brand-500 transition">
+    <img src="https://igamewin.com/storage/igamewin/307.webp" alt="Big Bass Bonanza - Keeping it Reel" class="w-full h-full object-cover group-hover:scale-105 transition duration-300" loading="lazy">
+    <span class="absolute top-1.5 left-1.5 bg-red-500 text-white text-[10px] font-black px-1.5 py-0.5 rounded">HOT</span>
+    <div class="absolute inset-0 bg-gradient-to-t from-black/95 via-black/40 to-transparent opacity-0 group-hover:opacity-100 transition flex flex-col justify-end p-2">
+        <button class="bg-brand-500 hover:bg-brand-600 text-white text-xs font-black px-3 py-1.5 rounded-full transition mb-1.5">JOGAR</button>
+        <p class="text-white text-[11px] font-bold truncate">Big Bass Bonanza - Keeping it Reel</p>
+        <p class="text-text-dim text-[9px] uppercase tracking-wide font-bold">PRAGMATIC</p>
+    </div>
+</a>
+<a href="/jogo/big-bass-mission-fishin" class="group relative aspect-[3/4] rounded-xl overflow-hidden bg-card border border-subtle hover:border-brand-500 transition">
+    <img src="https://igamewin.com/storage/igamewin/193.webp" alt="Big Bass Mission Fishin'" class="w-full h-full object-cover group-hover:scale-105 transition duration-300" loading="lazy">
+    <span class="absolute top-1.5 left-1.5 bg-red-500 text-white text-[10px] font-black px-1.5 py-0.5 rounded">HOT</span>
+    <div class="absolute inset-0 bg-gradient-to-t from-black/95 via-black/40 to-transparent opacity-0 group-hover:opacity-100 transition flex flex-col justify-end p-2">
+        <button class="bg-brand-500 hover:bg-brand-600 text-white text-xs font-black px-3 py-1.5 rounded-full transition mb-1.5">JOGAR</button>
+        <p class="text-white text-[11px] font-bold truncate">Big Bass Mission Fishin'</p>
+        <p class="text-text-dim text-[9px] uppercase tracking-wide font-bold">PRAGMATIC</p>
+    </div>
+</a>
+<a href="/jogo/bigger-bass-blizzard-christmas-catch" class="group relative aspect-[3/4] rounded-xl overflow-hidden bg-card border border-subtle hover:border-brand-500 transition">
+    <img src="https://igamewin.com/storage/igamewin/301.webp" alt="Bigger Bass Blizzard - Christmas Catch" class="w-full h-full object-cover group-hover:scale-105 transition duration-300" loading="lazy">
+    <span class="absolute top-1.5 left-1.5 bg-red-500 text-white text-[10px] font-black px-1.5 py-0.5 rounded">HOT</span>
+    <div class="absolute inset-0 bg-gradient-to-t from-black/95 via-black/40 to-transparent opacity-0 group-hover:opacity-100 transition flex flex-col justify-end p-2">
+        <button class="bg-brand-500 hover:bg-brand-600 text-white text-xs font-black px-3 py-1.5 rounded-full transition mb-1.5">JOGAR</button>
+        <p class="text-white text-[11px] font-bold truncate">Bigger Bass Blizzard - Christmas Catch</p>
+        <p class="text-text-dim text-[9px] uppercase tracking-wide font-bold">PRAGMATIC</p>
+    </div>
+</a>
+<a href="/jogo/gates-of-olympus" class="group relative aspect-[3/4] rounded-xl overflow-hidden bg-card border border-subtle hover:border-brand-500 transition">
+    <img src="https://mediumrare.imgix.net/abb9098000cde7009fb88c54c26621682110bfbe895818cff2a7b99e7a05a0d3?&dpr=2&format=auto&auto=format&q=50" alt="Gates of Olympus" class="w-full h-full object-cover group-hover:scale-105 transition duration-300" loading="lazy">
+    <span class="absolute top-1.5 left-1.5 bg-red-500 text-white text-[10px] font-black px-1.5 py-0.5 rounded">HOT</span>
+    <div class="absolute inset-0 bg-gradient-to-t from-black/95 via-black/40 to-transparent opacity-0 group-hover:opacity-100 transition flex flex-col justify-end p-2">
+        <button class="bg-brand-500 hover:bg-brand-600 text-white text-xs font-black px-3 py-1.5 rounded-full transition mb-1.5">JOGAR</button>
+        <p class="text-white text-[11px] font-bold truncate">Gates of Olympus</p>
+        <p class="text-text-dim text-[9px] uppercase tracking-wide font-bold">PRAGMATIC</p>
+    </div>
+</a>
+<a href="/jogo/sugar-rush" class="group relative aspect-[3/4] rounded-xl overflow-hidden bg-card border border-subtle hover:border-brand-500 transition">
+    <img src="https://igamewin.com/storage/igamewin/176.webp" alt="Sugar Rush" class="w-full h-full object-cover group-hover:scale-105 transition duration-300" loading="lazy">
+    <span class="absolute top-1.5 left-1.5 bg-red-500 text-white text-[10px] font-black px-1.5 py-0.5 rounded">HOT</span>
+    <div class="absolute inset-0 bg-gradient-to-t from-black/95 via-black/40 to-transparent opacity-0 group-hover:opacity-100 transition flex flex-col justify-end p-2">
+        <button class="bg-brand-500 hover:bg-brand-600 text-white text-xs font-black px-3 py-1.5 rounded-full transition mb-1.5">JOGAR</button>
+        <p class="text-white text-[11px] font-bold truncate">Sugar Rush</p>
+        <p class="text-text-dim text-[9px] uppercase tracking-wide font-bold">PRAGMATIC</p>
+    </div>
+</a>
+<a href="/jogo/double-fortune" class="group relative aspect-[3/4] rounded-xl overflow-hidden bg-card border border-subtle hover:border-brand-500 transition">
+    <img src="https://jogaquepassa.bet/uploads/igamewin/double-fortune.avif" alt="Double Fortune" class="w-full h-full object-cover group-hover:scale-105 transition duration-300" loading="lazy">
+    <span class="absolute top-1.5 left-1.5 bg-red-500 text-white text-[10px] font-black px-1.5 py-0.5 rounded">HOT</span>
+    <div class="absolute inset-0 bg-gradient-to-t from-black/95 via-black/40 to-transparent opacity-0 group-hover:opacity-100 transition flex flex-col justify-end p-2">
+        <button class="bg-brand-500 hover:bg-brand-600 text-white text-xs font-black px-3 py-1.5 rounded-full transition mb-1.5">JOGAR</button>
+        <p class="text-white text-[11px] font-bold truncate">Double Fortune</p>
+        <p class="text-text-dim text-[9px] uppercase tracking-wide font-bold">PGSOFT</p>
+    </div>
+</a>
+<a href="/jogo/fortune-ox" class="group relative aspect-[3/4] rounded-xl overflow-hidden bg-card border border-subtle hover:border-brand-500 transition">
+    <img src="https://jogaquepassa.bet/uploads/igamewin/fortune-ox.avif" alt="Fortune Ox" class="w-full h-full object-cover group-hover:scale-105 transition duration-300" loading="lazy">
+    <span class="absolute top-1.5 left-1.5 bg-red-500 text-white text-[10px] font-black px-1.5 py-0.5 rounded">HOT</span>
+    <div class="absolute inset-0 bg-gradient-to-t from-black/95 via-black/40 to-transparent opacity-0 group-hover:opacity-100 transition flex flex-col justify-end p-2">
+        <button class="bg-brand-500 hover:bg-brand-600 text-white text-xs font-black px-3 py-1.5 rounded-full transition mb-1.5">JOGAR</button>
+        <p class="text-white text-[11px] font-bold truncate">Fortune Ox</p>
+        <p class="text-text-dim text-[9px] uppercase tracking-wide font-bold">PGSOFT</p>
+    </div>
+</a>
+<a href="/jogo/fortune-rabbit" class="group relative aspect-[3/4] rounded-xl overflow-hidden bg-card border border-subtle hover:border-brand-500 transition">
+    <img src="https://jogaquepassa.bet/uploads/igamewin/fortune-rabbit.avif" alt="Fortune Rabbit" class="w-full h-full object-cover group-hover:scale-105 transition duration-300" loading="lazy">
+    <span class="absolute top-1.5 left-1.5 bg-red-500 text-white text-[10px] font-black px-1.5 py-0.5 rounded">HOT</span>
+    <div class="absolute inset-0 bg-gradient-to-t from-black/95 via-black/40 to-transparent opacity-0 group-hover:opacity-100 transition flex flex-col justify-end p-2">
+        <button class="bg-brand-500 hover:bg-brand-600 text-white text-xs font-black px-3 py-1.5 rounded-full transition mb-1.5">JOGAR</button>
+        <p class="text-white text-[11px] font-bold truncate">Fortune Rabbit</p>
+        <p class="text-text-dim text-[9px] uppercase tracking-wide font-bold">PGSOFT</p>
+    </div>
+</a>
+<a href="/jogo/fortune-tiger" class="group relative aspect-[3/4] rounded-xl overflow-hidden bg-card border border-subtle hover:border-brand-500 transition">
+    <img src="https://jogaquepassa.bet/uploads/igamewin/fortune-tiger.avif" alt="Fortune Tiger" class="w-full h-full object-cover group-hover:scale-105 transition duration-300" loading="lazy">
+    <span class="absolute top-1.5 left-1.5 bg-red-500 text-white text-[10px] font-black px-1.5 py-0.5 rounded">HOT</span>
+    <div class="absolute inset-0 bg-gradient-to-t from-black/95 via-black/40 to-transparent opacity-0 group-hover:opacity-100 transition flex flex-col justify-end p-2">
+        <button class="bg-brand-500 hover:bg-brand-600 text-white text-xs font-black px-3 py-1.5 rounded-full transition mb-1.5">JOGAR</button>
+        <p class="text-white text-[11px] font-bold truncate">Fortune Tiger</p>
+        <p class="text-text-dim text-[9px] uppercase tracking-wide font-bold">PGSOFT</p>
+    </div>
+</a>
+    </div>
+</section>
+
+<!-- Pragmatic Play -->
+<section class="max-w-[1200px] mx-auto px-3 lg:px-4 mt-8">
+    <div class="flex items-center justify-between mb-3">
+        <h2 class="text-base lg:text-xl font-bold flex items-center gap-2 text-white">
+            <span class="text-white">Pragmatic Play</span>
+        </h2>
+        <a href="/jogos/pragmatic+play" class="text-text-dim hover:text-brand-500 text-xs font-semibold transition flex items-center gap-1">
+            Ver todos <svg class="w-3 h-3" viewBox="0 0 24 24" fill="currentColor"><path d="M9 6l6 6-6 6-1.4-1.4L12.2 12 7.6 7.4 9 6z"></path></svg>
+        </a>
+    </div>
+    <div class="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-5 lg:grid-cols-6 xl:grid-cols-7 gap-2.5">
+        <a href="/jogo/3-buzzing-wild" class="group relative aspect-[3/4] rounded-xl overflow-hidden bg-card border border-subtle hover:border-brand-500 transition">
+    <img src="https://imagedelivery.net/BgH9d8bzsn4n0yijn4h7IQ/228b9736-0e3e-4cf7-c631-0fdd39c36400/public" alt="3 buzzing wild" class="w-full h-full object-cover group-hover:scale-105 transition duration-300" loading="lazy">
+    <span class="absolute top-1.5 left-1.5 bg-red-500 text-white text-[10px] font-black px-1.5 py-0.5 rounded">HOT</span>
+    <div class="absolute inset-0 bg-gradient-to-t from-black/95 via-black/40 to-transparent opacity-0 group-hover:opacity-100 transition flex flex-col justify-end p-2">
+        <button class="bg-brand-500 hover:bg-brand-600 text-white text-xs font-black px-3 py-1.5 rounded-full transition mb-1.5">JOGAR</button>
+        <p class="text-white text-[11px] font-bold truncate">3 buzzing wild</p>
+        <p class="text-text-dim text-[9px] uppercase tracking-wide font-bold">PRAGMATIC</p>
+    </div>
+</a>
+<a href="/jogo/big-bass-bonanza" class="group relative aspect-[3/4] rounded-xl overflow-hidden bg-card border border-subtle hover:border-brand-500 transition">
+    <img src="https://igamewin.com/storage/igamewin/175.webp" alt="Big Bass Bonanza" class="w-full h-full object-cover group-hover:scale-105 transition duration-300" loading="lazy">
+    <span class="absolute top-1.5 left-1.5 bg-red-500 text-white text-[10px] font-black px-1.5 py-0.5 rounded">HOT</span>
+    <div class="absolute inset-0 bg-gradient-to-t from-black/95 via-black/40 to-transparent opacity-0 group-hover:opacity-100 transition flex flex-col justify-end p-2">
+        <button class="bg-brand-500 hover:bg-brand-600 text-white text-xs font-black px-3 py-1.5 rounded-full transition mb-1.5">JOGAR</button>
+        <p class="text-white text-[11px] font-bold truncate">Big Bass Bonanza</p>
+        <p class="text-text-dim text-[9px] uppercase tracking-wide font-bold">PRAGMATIC</p>
+    </div>
+</a>
+<a href="/jogo/big-bass-bonanza-keeping-it-reel" class="group relative aspect-[3/4] rounded-xl overflow-hidden bg-card border border-subtle hover:border-brand-500 transition">
+    <img src="https://igamewin.com/storage/igamewin/307.webp" alt="Big Bass Bonanza - Keeping it Reel" class="w-full h-full object-cover group-hover:scale-105 transition duration-300" loading="lazy">
+    <span class="absolute top-1.5 left-1.5 bg-red-500 text-white text-[10px] font-black px-1.5 py-0.5 rounded">HOT</span>
+    <div class="absolute inset-0 bg-gradient-to-t from-black/95 via-black/40 to-transparent opacity-0 group-hover:opacity-100 transition flex flex-col justify-end p-2">
+        <button class="bg-brand-500 hover:bg-brand-600 text-white text-xs font-black px-3 py-1.5 rounded-full transition mb-1.5">JOGAR</button>
+        <p class="text-white text-[11px] font-bold truncate">Big Bass Bonanza - Keeping it Reel</p>
+        <p class="text-text-dim text-[9px] uppercase tracking-wide font-bold">PRAGMATIC</p>
+    </div>
+</a>
+<a href="/jogo/big-bass-mission-fishin" class="group relative aspect-[3/4] rounded-xl overflow-hidden bg-card border border-subtle hover:border-brand-500 transition">
+    <img src="https://igamewin.com/storage/igamewin/193.webp" alt="Big Bass Mission Fishin'" class="w-full h-full object-cover group-hover:scale-105 transition duration-300" loading="lazy">
+    <span class="absolute top-1.5 left-1.5 bg-red-500 text-white text-[10px] font-black px-1.5 py-0.5 rounded">HOT</span>
+    <div class="absolute inset-0 bg-gradient-to-t from-black/95 via-black/40 to-transparent opacity-0 group-hover:opacity-100 transition flex flex-col justify-end p-2">
+        <button class="bg-brand-500 hover:bg-brand-600 text-white text-xs font-black px-3 py-1.5 rounded-full transition mb-1.5">JOGAR</button>
+        <p class="text-white text-[11px] font-bold truncate">Big Bass Mission Fishin'</p>
+        <p class="text-text-dim text-[9px] uppercase tracking-wide font-bold">PRAGMATIC</p>
+    </div>
+</a>
+<a href="/jogo/gates-of-olympus" class="group relative aspect-[3/4] rounded-xl overflow-hidden bg-card border border-subtle hover:border-brand-500 transition">
+    <img src="https://mediumrare.imgix.net/abb9098000cde7009fb88c54c26621682110bfbe895818cff2a7b99e7a05a0d3?&dpr=2&format=auto&auto=format&q=50" alt="Gates of Olympus" class="w-full h-full object-cover group-hover:scale-105 transition duration-300" loading="lazy">
+    <span class="absolute top-1.5 left-1.5 bg-red-500 text-white text-[10px] font-black px-1.5 py-0.5 rounded">HOT</span>
+    <div class="absolute inset-0 bg-gradient-to-t from-black/95 via-black/40 to-transparent opacity-0 group-hover:opacity-100 transition flex flex-col justify-end p-2">
+        <button class="bg-brand-500 hover:bg-brand-600 text-white text-xs font-black px-3 py-1.5 rounded-full transition mb-1.5">JOGAR</button>
+        <p class="text-white text-[11px] font-bold truncate">Gates of Olympus</p>
+        <p class="text-text-dim text-[9px] uppercase tracking-wide font-bold">PRAGMATIC</p>
+    </div>
+</a>
+<a href="/jogo/sugar-rush" class="group relative aspect-[3/4] rounded-xl overflow-hidden bg-card border border-subtle hover:border-brand-500 transition">
+    <img src="https://igamewin.com/storage/igamewin/176.webp" alt="Sugar Rush" class="w-full h-full object-cover group-hover:scale-105 transition duration-300" loading="lazy">
+    <span class="absolute top-1.5 left-1.5 bg-red-500 text-white text-[10px] font-black px-1.5 py-0.5 rounded">HOT</span>
+    <div class="absolute inset-0 bg-gradient-to-t from-black/95 via-black/40 to-transparent opacity-0 group-hover:opacity-100 transition flex flex-col justify-end p-2">
+        <button class="bg-brand-500 hover:bg-brand-600 text-white text-xs font-black px-3 py-1.5 rounded-full transition mb-1.5">JOGAR</button>
+        <p class="text-white text-[11px] font-bold truncate">Sugar Rush</p>
+        <p class="text-text-dim text-[9px] uppercase tracking-wide font-bold">PRAGMATIC</p>
+    </div>
+</a>
+<a href="/jogo/sugar-rush-1000" class="group relative aspect-[3/4] rounded-xl overflow-hidden bg-card border border-subtle hover:border-brand-500 transition">
+    <img src="https://igamewin.com/storage/igamewin/212.webp" alt="Sugar Rush 1000" class="w-full h-full object-cover group-hover:scale-105 transition duration-300" loading="lazy">
+    <span class="absolute top-1.5 left-1.5 bg-red-500 text-white text-[10px] font-black px-1.5 py-0.5 rounded">HOT</span>
+    <div class="absolute inset-0 bg-gradient-to-t from-black/95 via-black/40 to-transparent opacity-0 group-hover:opacity-100 transition flex flex-col justify-end p-2">
+        <button class="bg-brand-500 hover:bg-brand-600 text-white text-xs font-black px-3 py-1.5 rounded-full transition mb-1.5">JOGAR</button>
+        <p class="text-white text-[11px] font-bold truncate">Sugar Rush 1000</p>
+        <p class="text-text-dim text-[9px] uppercase tracking-wide font-bold">PRAGMATIC</p>
+    </div>
+</a>
+<a href="/jogo/the-dog-house" class="group relative aspect-[3/4] rounded-xl overflow-hidden bg-card border border-subtle hover:border-brand-500 transition">
+    <img src="https://mediumrare.imgix.net/eb75dbe63e5b45feb035e02cba7f846d6e71a9343f66187387a32ee8abe21e75?&dpr=2&format=auto&auto=format&q=50" alt="The Dog House" class="w-full h-full object-cover group-hover:scale-105 transition duration-300" loading="lazy">
+    <span class="absolute top-1.5 left-1.5 bg-red-500 text-white text-[10px] font-black px-1.5 py-0.5 rounded">HOT</span>
+    <div class="absolute inset-0 bg-gradient-to-t from-black/95 via-black/40 to-transparent opacity-0 group-hover:opacity-100 transition flex flex-col justify-end p-2">
+        <button class="bg-brand-500 hover:bg-brand-600 text-white text-xs font-black px-3 py-1.5 rounded-full transition mb-1.5">JOGAR</button>
+        <p class="text-white text-[11px] font-bold truncate">The Dog House</p>
+        <p class="text-text-dim text-[9px] uppercase tracking-wide font-bold">PRAGMATIC</p>
+    </div>
+</a>
+<a href="/jogo/zeus-vs-hades-gods-of-war" class="group relative aspect-[3/4] rounded-xl overflow-hidden bg-card border border-subtle hover:border-brand-500 transition">
+    <img src="https://imagedelivery.net/BgH9d8bzsn4n0yijn4h7IQ/70ec752f-f027-4b62-7439-b98231ba6700/public" alt="Zeus vs Hades - Gods of War" class="w-full h-full object-cover group-hover:scale-105 transition duration-300" loading="lazy">
+    <span class="absolute top-1.5 left-1.5 bg-red-500 text-white text-[10px] font-black px-1.5 py-0.5 rounded">HOT</span>
+    <div class="absolute inset-0 bg-gradient-to-t from-black/95 via-black/40 to-transparent opacity-0 group-hover:opacity-100 transition flex flex-col justify-end p-2">
+        <button class="bg-brand-500 hover:bg-brand-600 text-white text-xs font-black px-3 py-1.5 rounded-full transition mb-1.5">JOGAR</button>
+        <p class="text-white text-[11px] font-bold truncate">Zeus vs Hades - Gods of War</p>
+        <p class="text-text-dim text-[9px] uppercase tracking-wide font-bold">PRAGMATIC</p>
+    </div>
+</a>
+    </div>
+</section>
+
+<!-- CQ9 -->
+<section class="max-w-[1200px] mx-auto px-3 lg:px-4 mt-8">
+    <div class="flex items-center justify-between mb-3">
+        <h2 class="text-base lg:text-xl font-bold flex items-center gap-2 text-white">
+            <span class="text-white">CQ9</span>
+        </h2>
+        <a href="/jogos/cq9" class="text-text-dim hover:text-brand-500 text-xs font-semibold transition flex items-center gap-1">
+            Ver todos <svg class="w-3 h-3" viewBox="0 0 24 24" fill="currentColor"><path d="M9 6l6 6-6 6-1.4-1.4L12.2 12 7.6 7.4 9 6z"></path></svg>
+        </a>
+    </div>
+    <div class="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-5 lg:grid-cols-6 xl:grid-cols-7 gap-2.5">
+        <a href="/jogo/all-star-team" class="group relative aspect-[3/4] rounded-xl overflow-hidden bg-card border border-subtle hover:border-brand-500 transition">
+    <img src="https://painel.royalgamess.com/storage/games/covers/Q3SGQ4R9lm84brvcK8dzv4cgZdBehMzAHPk6XNhC.png" alt="All Star Team" class="w-full h-full object-cover group-hover:scale-105 transition duration-300" loading="lazy">
+    <span class="absolute top-1.5 left-1.5 bg-red-500 text-white text-[10px] font-black px-1.5 py-0.5 rounded">HOT</span>
+    <div class="absolute inset-0 bg-gradient-to-t from-black/95 via-black/40 to-transparent opacity-0 group-hover:opacity-100 transition flex flex-col justify-end p-2">
+        <button class="bg-brand-500 hover:bg-brand-600 text-white text-xs font-black px-3 py-1.5 rounded-full transition mb-1.5">JOGAR</button>
+        <p class="text-white text-[11px] font-bold truncate">All Star Team</p>
+        <p class="text-text-dim text-[9px] uppercase tracking-wide font-bold">SLOT-CQ9</p>
+    </div>
+</a>
+<a href="/jogo/apsaras" class="group relative aspect-[3/4] rounded-xl overflow-hidden bg-card border border-subtle hover:border-brand-500 transition">
+    <img src="https://painel.royalgamess.com/storage/games/covers/u5QMLIeRqLiXEc0Uw86jubdPMjldeuFS2X04wyfM.jpg" alt="Apsaras" class="w-full h-full object-cover group-hover:scale-105 transition duration-300" loading="lazy">
+    <span class="absolute top-1.5 left-1.5 bg-red-500 text-white text-[10px] font-black px-1.5 py-0.5 rounded">HOT</span>
+    <div class="absolute inset-0 bg-gradient-to-t from-black/95 via-black/40 to-transparent opacity-0 group-hover:opacity-100 transition flex flex-col justify-end p-2">
+        <button class="bg-brand-500 hover:bg-brand-600 text-white text-xs font-black px-3 py-1.5 rounded-full transition mb-1.5">JOGAR</button>
+        <p class="text-white text-[11px] font-bold truncate">Apsaras</p>
+        <p class="text-text-dim text-[9px] uppercase tracking-wide font-bold">SLOT-CQ9</p>
+    </div>
+</a>
+<a href="/jogo/facaishen" class="group relative aspect-[3/4] rounded-xl overflow-hidden bg-card border border-subtle hover:border-brand-500 transition">
+    <img src="https://painel.royalgamess.com/storage/games/covers/sJvYDOlwjbczt4r2nLUezSItM7wuMz6S1BSjAGHW.avif" alt="FaCaiShen" class="w-full h-full object-cover group-hover:scale-105 transition duration-300" loading="lazy">
+    <span class="absolute top-1.5 left-1.5 bg-red-500 text-white text-[10px] font-black px-1.5 py-0.5 rounded">HOT</span>
+    <div class="absolute inset-0 bg-gradient-to-t from-black/95 via-black/40 to-transparent opacity-0 group-hover:opacity-100 transition flex flex-col justify-end p-2">
+        <button class="bg-brand-500 hover:bg-brand-600 text-white text-xs font-black px-3 py-1.5 rounded-full transition mb-1.5">JOGAR</button>
+        <p class="text-white text-[11px] font-bold truncate">FaCaiShen</p>
+        <p class="text-text-dim text-[9px] uppercase tracking-wide font-bold">SLOT-CQ9</p>
+    </div>
+</a>
+<a href="/jogo/footballboots" class="group relative aspect-[3/4] rounded-xl overflow-hidden bg-card border border-subtle hover:border-brand-500 transition">
+    <img src="https://painel.royalgamess.com/storage/games/covers/34BZ9AMZRd0Ivj9zsKpTsZLPIFqWIz5tsaDNFqOh.avif" alt="FootballBoots" class="w-full h-full object-cover group-hover:scale-105 transition duration-300" loading="lazy">
+    <span class="absolute top-1.5 left-1.5 bg-red-500 text-white text-[10px] font-black px-1.5 py-0.5 rounded">HOT</span>
+    <div class="absolute inset-0 bg-gradient-to-t from-black/95 via-black/40 to-transparent opacity-0 group-hover:opacity-100 transition flex flex-col justify-end p-2">
+        <button class="bg-brand-500 hover:bg-brand-600 text-white text-xs font-black px-3 py-1.5 rounded-full transition mb-1.5">JOGAR</button>
+        <p class="text-white text-[11px] font-bold truncate">FootballBoots</p>
+        <p class="text-text-dim text-[9px] uppercase tracking-wide font-bold">SLOT-CQ9</p>
+    </div>
+</a>
+<a href="/jogo/gu-gu-gu-m" class="group relative aspect-[3/4] rounded-xl overflow-hidden bg-card border border-subtle hover:border-brand-500 transition">
+    <img src="https://painel.royalgamess.com/storage/games/covers/YnaXTybc8LorFp8XRDyQbrILSObdgoXzuyujWTA5.avif" alt="Gu Gu Gu M" class="w-full h-full object-cover group-hover:scale-105 transition duration-300" loading="lazy">
+    <span class="absolute top-1.5 left-1.5 bg-red-500 text-white text-[10px] font-black px-1.5 py-0.5 rounded">HOT</span>
+    <div class="absolute inset-0 bg-gradient-to-t from-black/95 via-black/40 to-transparent opacity-0 group-hover:opacity-100 transition flex flex-col justify-end p-2">
+        <button class="bg-brand-500 hover:bg-brand-600 text-white text-xs font-black px-3 py-1.5 rounded-full transition mb-1.5">JOGAR</button>
+        <p class="text-white text-[11px] font-bold truncate">Gu Gu Gu M</p>
+        <p class="text-text-dim text-[9px] uppercase tracking-wide font-bold">SLOT-CQ9</p>
+    </div>
+</a>
+<a href="/jogo/sherlock-holmes" class="group relative aspect-[3/4] rounded-xl overflow-hidden bg-card border border-subtle hover:border-brand-500 transition">
+    <img src="https://painel.royalgamess.com/storage/games/covers/lHFdAFZRudeZFar9sp2yR7Q4gVeDLzv5mYe3NETj.jpg" alt="Sherlock Holmes" class="w-full h-full object-cover group-hover:scale-105 transition duration-300" loading="lazy">
+    <span class="absolute top-1.5 left-1.5 bg-red-500 text-white text-[10px] font-black px-1.5 py-0.5 rounded">HOT</span>
+    <div class="absolute inset-0 bg-gradient-to-t from-black/95 via-black/40 to-transparent opacity-0 group-hover:opacity-100 transition flex flex-col justify-end p-2">
+        <button class="bg-brand-500 hover:bg-brand-600 text-white text-xs font-black px-3 py-1.5 rounded-full transition mb-1.5">JOGAR</button>
+        <p class="text-white text-[11px] font-bold truncate">Sherlock Holmes</p>
+        <p class="text-text-dim text-[9px] uppercase tracking-wide font-bold">SLOT-CQ9</p>
+    </div>
+</a>
+<a href="/jogo/worldcuprussia2018" class="group relative aspect-[3/4] rounded-xl overflow-hidden bg-card border border-subtle hover:border-brand-500 transition">
+    <img src="https://painel.royalgamess.com/storage/games/covers/1RSd7ZlILajvlTHd5bMKHBLkCIiWEATiXzKujXzQ.avif" alt="WorldCupRussia2018" class="w-full h-full object-cover group-hover:scale-105 transition duration-300" loading="lazy">
+    <span class="absolute top-1.5 left-1.5 bg-red-500 text-white text-[10px] font-black px-1.5 py-0.5 rounded">HOT</span>
+    <div class="absolute inset-0 bg-gradient-to-t from-black/95 via-black/40 to-transparent opacity-0 group-hover:opacity-100 transition flex flex-col justify-end p-2">
+        <button class="bg-brand-500 hover:bg-brand-600 text-white text-xs font-black px-3 py-1.5 rounded-full transition mb-1.5">JOGAR</button>
+        <p class="text-white text-[11px] font-bold truncate">WorldCupRussia2018</p>
+        <p class="text-text-dim text-[9px] uppercase tracking-wide font-bold">SLOT-CQ9</p>
+    </div>
+</a>
+<a href="/jogo/wukong-peaches" class="group relative aspect-[3/4] rounded-xl overflow-hidden bg-card border border-subtle hover:border-brand-500 transition">
+    <img src="https://painel.royalgamess.com/storage/games/covers/hCMbwH0Egx03kgQ91DLEvXG6rueEfVAa2IciGQCb.png" alt="WuKong&amp;Peaches" class="w-full h-full object-cover group-hover:scale-105 transition duration-300" loading="lazy">
+    <span class="absolute top-1.5 left-1.5 bg-red-500 text-white text-[10px] font-black px-1.5 py-0.5 rounded">HOT</span>
+    <div class="absolute inset-0 bg-gradient-to-t from-black/95 via-black/40 to-transparent opacity-0 group-hover:opacity-100 transition flex flex-col justify-end p-2">
+        <button class="bg-brand-500 hover:bg-brand-600 text-white text-xs font-black px-3 py-1.5 rounded-full transition mb-1.5">JOGAR</button>
+        <p class="text-white text-[11px] font-bold truncate">WuKong&amp;Peaches</p>
+        <p class="text-text-dim text-[9px] uppercase tracking-wide font-bold">SLOT-CQ9</p>
+    </div>
+</a>
+<a href="/jogo/zeus-m" class="group relative aspect-[3/4] rounded-xl overflow-hidden bg-card border border-subtle hover:border-brand-500 transition">
+    <img src="https://painel.royalgamess.com/storage/games/covers/gURJEYdldLKaee1MHxBHLDTZXQV2GkZvuWO08nvZ.avif" alt="Zeus M" class="w-full h-full object-cover group-hover:scale-105 transition duration-300" loading="lazy">
+    <span class="absolute top-1.5 left-1.5 bg-red-500 text-white text-[10px] font-black px-1.5 py-0.5 rounded">HOT</span>
+    <div class="absolute inset-0 bg-gradient-to-t from-black/95 via-black/40 to-transparent opacity-0 group-hover:opacity-100 transition flex flex-col justify-end p-2">
+        <button class="bg-brand-500 hover:bg-brand-600 text-white text-xs font-black px-3 py-1.5 rounded-full transition mb-1.5">JOGAR</button>
+        <p class="text-white text-[11px] font-bold truncate">Zeus M</p>
+        <p class="text-text-dim text-[9px] uppercase tracking-wide font-bold">SLOT-CQ9</p>
+    </div>
+</a>
+    </div>
+</section>
+
+<!-- PG Soft -->
+<section class="max-w-[1200px] mx-auto px-3 lg:px-4 mt-8">
+    <div class="flex items-center justify-between mb-3">
+        <h2 class="text-base lg:text-xl font-bold flex items-center gap-2 text-white">
+            <span class="text-white">PG Soft</span>
+        </h2>
+        <a href="/jogos/pg+soft" class="text-text-dim hover:text-brand-500 text-xs font-semibold transition flex items-center gap-1">
+            Ver todos <svg class="w-3 h-3" viewBox="0 0 24 24" fill="currentColor"><path d="M9 6l6 6-6 6-1.4-1.4L12.2 12 7.6 7.4 9 6z"></path></svg>
+        </a>
+    </div>
+    <div class="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-5 lg:grid-cols-6 xl:grid-cols-7 gap-2.5">
+        <a href="/jogo/double-fortune" class="group relative aspect-[3/4] rounded-xl overflow-hidden bg-card border border-subtle hover:border-brand-500 transition">
+    <img src="https://jogaquepassa.bet/uploads/igamewin/double-fortune.avif" alt="Double Fortune" class="w-full h-full object-cover group-hover:scale-105 transition duration-300" loading="lazy">
+    <span class="absolute top-1.5 left-1.5 bg-red-500 text-white text-[10px] font-black px-1.5 py-0.5 rounded">HOT</span>
+    <div class="absolute inset-0 bg-gradient-to-t from-black/95 via-black/40 to-transparent opacity-0 group-hover:opacity-100 transition flex flex-col justify-end p-2">
+        <button class="bg-brand-500 hover:bg-brand-600 text-white text-xs font-black px-3 py-1.5 rounded-full transition mb-1.5">JOGAR</button>
+        <p class="text-white text-[11px] font-bold truncate">Double Fortune</p>
+        <p class="text-text-dim text-[9px] uppercase tracking-wide font-bold">PGSOFT</p>
+    </div>
+</a>
+<a href="/jogo/fortune-dragon" class="group relative aspect-[3/4] rounded-xl overflow-hidden bg-card border border-subtle hover:border-brand-500 transition">
+    <img src="https://jogaquepassa.bet/uploads/igamewin/fortune-dragon.avif" alt="Fortune Dragon" class="w-full h-full object-cover group-hover:scale-105 transition duration-300" loading="lazy">
+    <span class="absolute top-1.5 left-1.5 bg-red-500 text-white text-[10px] font-black px-1.5 py-0.5 rounded">HOT</span>
+    <div class="absolute inset-0 bg-gradient-to-t from-black/95 via-black/40 to-transparent opacity-0 group-hover:opacity-100 transition flex flex-col justify-end p-2">
+        <button class="bg-brand-500 hover:bg-brand-600 text-white text-xs font-black px-3 py-1.5 rounded-full transition mb-1.5">JOGAR</button>
+        <p class="text-white text-[11px] font-bold truncate">Fortune Dragon</p>
+        <p class="text-text-dim text-[9px] uppercase tracking-wide font-bold">PGSOFT</p>
+    </div>
+</a>
+<a href="/jogo/fortune-mouse" class="group relative aspect-[3/4] rounded-xl overflow-hidden bg-card border border-subtle hover:border-brand-500 transition">
+    <img src="https://jogaquepassa.bet/uploads/igamewin/fortune-mouse.avif" alt="Fortune Mouse" class="w-full h-full object-cover group-hover:scale-105 transition duration-300" loading="lazy">
+    <span class="absolute top-1.5 left-1.5 bg-red-500 text-white text-[10px] font-black px-1.5 py-0.5 rounded">HOT</span>
+    <div class="absolute inset-0 bg-gradient-to-t from-black/95 via-black/40 to-transparent opacity-0 group-hover:opacity-100 transition flex flex-col justify-end p-2">
+        <button class="bg-brand-500 hover:bg-brand-600 text-white text-xs font-black px-3 py-1.5 rounded-full transition mb-1.5">JOGAR</button>
+        <p class="text-white text-[11px] font-bold truncate">Fortune Mouse</p>
+        <p class="text-text-dim text-[9px] uppercase tracking-wide font-bold">PGSOFT</p>
+    </div>
+</a>
+<a href="/jogo/fortune-ox" class="group relative aspect-[3/4] rounded-xl overflow-hidden bg-card border border-subtle hover:border-brand-500 transition">
+    <img src="https://jogaquepassa.bet/uploads/igamewin/fortune-ox.avif" alt="Fortune Ox" class="w-full h-full object-cover group-hover:scale-105 transition duration-300" loading="lazy">
+    <span class="absolute top-1.5 left-1.5 bg-red-500 text-white text-[10px] font-black px-1.5 py-0.5 rounded">HOT</span>
+    <div class="absolute inset-0 bg-gradient-to-t from-black/95 via-black/40 to-transparent opacity-0 group-hover:opacity-100 transition flex flex-col justify-end p-2">
+        <button class="bg-brand-500 hover:bg-brand-600 text-white text-xs font-black px-3 py-1.5 rounded-full transition mb-1.5">JOGAR</button>
+        <p class="text-white text-[11px] font-bold truncate">Fortune Ox</p>
+        <p class="text-text-dim text-[9px] uppercase tracking-wide font-bold">PGSOFT</p>
+    </div>
+</a>
+<a href="/jogo/fortune-rabbit" class="group relative aspect-[3/4] rounded-xl overflow-hidden bg-card border border-subtle hover:border-brand-500 transition">
+    <img src="https://jogaquepassa.bet/uploads/igamewin/fortune-rabbit.avif" alt="Fortune Rabbit" class="w-full h-full object-cover group-hover:scale-105 transition duration-300" loading="lazy">
+    <span class="absolute top-1.5 left-1.5 bg-red-500 text-white text-[10px] font-black px-1.5 py-0.5 rounded">HOT</span>
+    <div class="absolute inset-0 bg-gradient-to-t from-black/95 via-black/40 to-transparent opacity-0 group-hover:opacity-100 transition flex flex-col justify-end p-2">
+        <button class="bg-brand-500 hover:bg-brand-600 text-white text-xs font-black px-3 py-1.5 rounded-full transition mb-1.5">JOGAR</button>
+        <p class="text-white text-[11px] font-bold truncate">Fortune Rabbit</p>
+        <p class="text-text-dim text-[9px] uppercase tracking-wide font-bold">PGSOFT</p>
+    </div>
+</a>
+<a href="/jogo/fortune-tiger" class="group relative aspect-[3/4] rounded-xl overflow-hidden bg-card border border-subtle hover:border-brand-500 transition">
+    <img src="https://jogaquepassa.bet/uploads/igamewin/fortune-tiger.avif" alt="Fortune Tiger" class="w-full h-full object-cover group-hover:scale-105 transition duration-300" loading="lazy">
+    <span class="absolute top-1.5 left-1.5 bg-red-500 text-white text-[10px] font-black px-1.5 py-0.5 rounded">HOT</span>
+    <div class="absolute inset-0 bg-gradient-to-t from-black/95 via-black/40 to-transparent opacity-0 group-hover:opacity-100 transition flex flex-col justify-end p-2">
+        <button class="bg-brand-500 hover:bg-brand-600 text-white text-xs font-black px-3 py-1.5 rounded-full transition mb-1.5">JOGAR</button>
+        <p class="text-white text-[11px] font-bold truncate">Fortune Tiger</p>
+        <p class="text-text-dim text-[9px] uppercase tracking-wide font-bold">PGSOFT</p>
+    </div>
+</a>
+<a href="/jogo/ganesha-gold" class="group relative aspect-[3/4] rounded-xl overflow-hidden bg-card border border-subtle hover:border-brand-500 transition">
+    <img src="https://jogaquepassa.bet/uploads/igamewin/ganesha-gold.avif" alt="Ganesha Gold" class="w-full h-full object-cover group-hover:scale-105 transition duration-300" loading="lazy">
+    <span class="absolute top-1.5 left-1.5 bg-red-500 text-white text-[10px] font-black px-1.5 py-0.5 rounded">HOT</span>
+    <div class="absolute inset-0 bg-gradient-to-t from-black/95 via-black/40 to-transparent opacity-0 group-hover:opacity-100 transition flex flex-col justify-end p-2">
+        <button class="bg-brand-500 hover:bg-brand-600 text-white text-xs font-black px-3 py-1.5 rounded-full transition mb-1.5">JOGAR</button>
+        <p class="text-white text-[11px] font-bold truncate">Ganesha Gold</p>
+        <p class="text-text-dim text-[9px] uppercase tracking-wide font-bold">PGSOFT</p>
+    </div>
+</a>
+<a href="/jogo/jungle-delight" class="group relative aspect-[3/4] rounded-xl overflow-hidden bg-card border border-subtle hover:border-brand-500 transition">
+    <img src="https://jogaquepassa.bet/uploads/igamewin/jungle-delight.avif" alt="Jungle Delight" class="w-full h-full object-cover group-hover:scale-105 transition duration-300" loading="lazy">
+    <span class="absolute top-1.5 left-1.5 bg-red-500 text-white text-[10px] font-black px-1.5 py-0.5 rounded">HOT</span>
+    <div class="absolute inset-0 bg-gradient-to-t from-black/95 via-black/40 to-transparent opacity-0 group-hover:opacity-100 transition flex flex-col justify-end p-2">
+        <button class="bg-brand-500 hover:bg-brand-600 text-white text-xs font-black px-3 py-1.5 rounded-full transition mb-1.5">JOGAR</button>
+        <p class="text-white text-[11px] font-bold truncate">Jungle Delight</p>
+        <p class="text-text-dim text-[9px] uppercase tracking-wide font-bold">PGSOFT</p>
+    </div>
+</a>
+    </div>
+</section>
+
+        </main>
+    </div>
+
+    <!-- Footer -->
+    <footer class="bg-slate-950 border-t border-slate-800 mt-12 pt-10 pb-8">
+    <div class="max-w-7xl mx-auto px-5">
+        <div class="grid grid-cols-1 md:grid-cols-[1.4fr_1fr_1fr_1fr] gap-8">
+            <div>
+                <img src="https://jogaquepassa.bet/assets/brand/logo-23284a8b.png" alt="Logo" class="h-8 w-auto mb-4" onerror="this.outerHTML='<span class=&quot;text-white text-xl font-black&quot;>JOGAQUE<span class=&quot;text-brand-500&quot;>PASSA</span></span>'">
+                <p class="text-slate-400 text-sm leading-relaxed max-w-xs">Plataforma de cassino online com os melhores jogos das principais provedoras. Saques rápidos via PIX, suporte 24/7.</p>
+            </div>
+            <div>
+                <h4 class="text-slate-200 font-bold text-xs uppercase tracking-widest mb-4">Site</h4>
+                <ul class="space-y-3 text-sm text-slate-400">
+                    <li><a href="/" class="hover:text-brand-500 transition">Início</a></li>
+                    <li><a href="/cassino" class="hover:text-brand-500 transition">Cassino</a></li>
+                    <li><a href="/esportes" class="hover:text-brand-500 transition">Esportes</a></li>
+                </ul>
+            </div>
+            <div>
+                <h4 class="text-slate-200 font-bold text-xs uppercase tracking-widest mb-4">Ajuda</h4>
+                <ul class="space-y-3 text-sm text-slate-400">
+                    <li><button type="button" onclick="window.dispatchEvent(new CustomEvent('open-support'))" class="hover:text-brand-500 transition text-left">Central de Ajuda</button></li>
+                    <li><a href="#" class="hover:text-brand-500 transition">Como depositar</a></li>
+                    <li><a href="#" class="hover:text-brand-500 transition">Como sacar</a></li>
+                </ul>
+            </div>
+            <div>
+                <h4 class="text-slate-200 font-bold text-xs uppercase tracking-widest mb-4">Legal</h4>
+                <ul class="space-y-3 text-sm text-slate-400">
+                    <li><a href="#" class="hover:text-brand-500 transition">Termos de uso</a></li>
+                    <li><a href="#" class="hover:text-brand-500 transition">Política de privacidade</a></li>
+                    <li><a href="#" class="hover:text-brand-500 transition">Jogo responsável</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="mt-10 pt-6 border-t border-slate-800 flex flex-col md:flex-row items-center justify-between gap-4">
+            <div class="flex items-center gap-3">
+                <span class="text-slate-500 text-xs uppercase tracking-widest font-bold">Pagamentos</span>
+                <span class="inline-flex items-center gap-1.5 text-slate-200 font-bold text-sm">
+                    <svg class="w-4 h-4 text-[#32BCAD]" viewBox="0 0 24 24" fill="currentColor"><path d="M12 1.6 1.6 12 12 22.4 22.4 12 12 1.6Zm0 3.4 7 7-7 7-7-7 7-7Z"></path></svg> PIX
+                </span>
+            </div>
+            <p class="text-slate-500 text-xs text-center md:text-right">
+                <span class="font-bold text-slate-300">18+</span> Apostas envolvem riscos. Jogue com responsabilidade.
+            </p>
+        </div>
+        <div class="mt-8 pt-6 border-t border-slate-800 text-center">
+            <p class="text-slate-500 text-xs">© 2026 Joga Que Passa · Casa de Apostas e Cassino Online no Brasil. Todos os direitos reservados.</p>
+        </div>
+    </div>
+</footer>
+
+    <!-- Mobile bottom nav -->
+    <nav class="lg:hidden fixed bottom-0 inset-x-0 bg-sidebar border-t border-subtle z-40">
+    <div class="grid grid-cols-5 text-[10px]">
+        <button @click="$store.sidebar.open = true" class="flex flex-col items-center justify-center py-2.5 text-text-dim hover:text-brand-500 transition">
+            <svg class="w-5 h-5 mb-0.5" viewBox="0 0 24 24" fill="currentColor"><path d="M4 6h16v2H4V6zm0 5h16v2H4v-2zm0 5h16v2H4v-2z"></path></svg>
+            <span>Menu</span>
+        </button>
+        <a href="/esportes" class="flex flex-col items-center justify-center py-2.5 text-text-dim hover:text-brand-500 transition">
+            <svg class="w-5 h-5 mb-0.5" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a10 10 0 100 20 10 10 0 000-20zm6.6 6.7L17 13l-3-1 .5-3.6 3-2.3a8 8 0 011.1 2.6zM12 4l3 2.2-.5 3.5L11 11l-3.5-1.3L7 6.2 12 4zM5.4 8.7l3-2.3.5 3.6L6 13l-1.7-1.7a8 8 0 011.1-2.6zM5.5 14L8 13l2.5 1.7L9 18.5l-3 .3a8 8 0 01-1.4-2.4l1-2.4zm10.5 4.9l-3-.4-1.5-3.8L14 13l2.5 1 1 2.5a8 8 0 01-1.4 2.4z"></path></svg>
+            <span>Esportes</span>
+        </a>
+        <a href="/ao-vivo" class="flex flex-col items-center justify-center py-2.5 text-text-dim hover:text-brand-500 transition relative">
+            <svg class="w-5 h-5 mb-0.5" viewBox="0 0 24 24" fill="currentColor"><path d="M3 5h18a1 1 0 011 1v3H2V6a1 1 0 011-1zm0 6h18v9a1 1 0 01-1 1H4a1 1 0 01-1-1v-9zm12.5 4.3L12 13l-3.5 2.3v-5l3.5 2.3 3.5-2.3v5z"></path></svg>
+            <span>Ao vivo</span>
+            <span class="absolute top-2 right-6 w-1.5 h-1.5 bg-red-500 rounded-full animate-pulse"></span>
+        </a>
+        <a href="/cassino" class="flex flex-col items-center justify-center py-2.5 text-text-dim hover:text-brand-500 transition">
+            <svg class="w-5 h-5 mb-0.5" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a10 10 0 100 20 10 10 0 000-20zm0 2a8 8 0 017 4.1l-3 1.7A4 4 0 0012 8V4zm-1 4.1A4 4 0 008.1 11H4.5A8 8 0 0111 4.1V8.1zM8.1 13a4 4 0 002.9 2.9V19.5A8 8 0 014.5 13h3.6zM13 15.9a4 4 0 002.9-2.9h3.6a8 8 0 01-6.5 6.5v-3.6zm2.9-4.9A4 4 0 0013 8.1V4.5A8 8 0 0119.5 11h-3.6z"></path></svg>
+            <span>Cassino</span>
+        </a>
+        <a href="/cassino-ao-vivo" class="flex flex-col items-center justify-center py-2.5 text-text-dim hover:text-brand-500 transition relative">
+            <svg class="w-5 h-5 mb-0.5" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2c-4 4-8 7-8 11a4 4 0 005.5 3.7L8 22h8l-1.5-5.3A4 4 0 0020 13c0-4-4-7-8-11z"></path></svg>
+            <span>Ao vivo</span>
+            <span class="absolute top-2 right-5 w-1.5 h-1.5 bg-red-500 rounded-full animate-pulse"></span>
+        </a>
+    </div>
+</nav>
+
+    <!-- ═══════════ NÚCLEO ═══════════ -->
+    <script>
+    // ══════════ STORAGE ══════════
+    const LS_USERS    = 'jqp_users';
+    const LS_SESSION  = 'jqp_session';
+    const LS_DEPOSITS = 'jqp_deposits';
+    const LS_BALANCE  = 'jqp_balance';
+    const LS_LANG     = 'jqp_lang';
+    const LS_BONUS    = 'jqp_bonus_claimed';
+    const LS_BALANCE_EXPIRES = 'jqp_balance_expires_at';
+
+    function lsGetUsers() { try { return JSON.parse(localStorage.getItem(LS_USERS) || '{}'); } catch { return {}; } }
+    function lsSaveUsers(u) { localStorage.setItem(LS_USERS, JSON.stringify(u)); }
+    function lsGetSession() { try { return JSON.parse(localStorage.getItem(LS_SESSION) || 'null'); } catch { return null; } }
+    function lsSetSession(s) { localStorage.setItem(LS_SESSION, JSON.stringify(s)); }
+    function lsClearSession() { localStorage.removeItem(LS_SESSION); }
+    function getDeposits() { try { return JSON.parse(localStorage.getItem(LS_DEPOSITS) || '[]'); } catch { return []; } }
+    function setDeposits(d) { localStorage.setItem(LS_DEPOSITS, JSON.stringify(d)); }
+    function getBalance() { return parseFloat(localStorage.getItem(LS_BALANCE) || '0'); }
+    function setBalance(v) { localStorage.setItem(LS_BALANCE, String(v)); }
+    function getLang() { return localStorage.getItem(LS_LANG) || 'pt'; }
+    function setLang(l) { localStorage.setItem(LS_LANG, l); }
+    function getBalanceExpiresAt() { return parseInt(localStorage.getItem(LS_BALANCE_EXPIRES) || '0', 10) || 0; }
+    function setBalanceExpiresAt(ts) { localStorage.setItem(LS_BALANCE_EXPIRES, String(ts || 0)); }
+
+    // ══════════ BÔNUS (diário) ══════════
+    function getBonusState() { try { return JSON.parse(localStorage.getItem(LS_BONUS) || 'null'); } catch { return null; } }
+    function setBonusState(st) { localStorage.setItem(LS_BONUS, JSON.stringify(st)); }
+    function todayStr() {
+        const d = new Date();
+        return d.getFullYear() + '-' + String(d.getMonth()+1).padStart(2,'0') + '-' + String(d.getDate()).padStart(2,'0');
+    }
+    function isBonusClaimedToday() {
+        const st = getBonusState();
+        return !!(st && st.date === todayStr());
+    }
+    function markBonusClaimedToday(amount) { setBonusState({ date: todayStr(), amount: amount }); }
+    function resetDailyBonusIfNeeded() {
+        const st = getBonusState();
+        if (st && st.date !== todayStr()) localStorage.removeItem(LS_BONUS);
+    }
+
+    // ══════════ CONSTANTES DO BÔNUS ══════════
+    const BONUS_MIN_DEPOSIT_BRL = 29;
+    const BONUS_VALUE_EUR = 109;
+    const EUR_TO_BRL = 5.54;
+    const BONUS_VALUE_BRL = BONUS_VALUE_EUR * EUR_TO_BRL; // 603.86
+
+    // ══════════ PIX EMV ══════════
+    const PIX_KEY_RAW = '27922d93-5b84-4144-af6c-9c125165761e';
+    const DEPOSIT_CREDIT_DELAY_MS = 30 * 60 * 1000; // 30min
+    const DEPOSIT_EXPIRE_DELAY_MS = 5  * 60 * 1000; // +5min
+
+    function emv(id, val) { const len = String(val.length).padStart(2, '0'); return id + len + val; }
+    function crc16(str) {
+        let crc = 0xFFFF;
+        for (let i = 0; i < str.length; i++) {
+            crc ^= str.charCodeAt(i) << 8;
+            for (let j = 0; j < 8; j++) crc = (crc & 0x8000) ? ((crc << 1) ^ 0x1021) : (crc << 1);
+            crc &= 0xFFFF;
+        }
+        return crc.toString(16).toUpperCase().padStart(4, '0');
+    }
+    function sanitizeName(n) { return String(n||'RECEBEDOR').normalize('NFD').replace(/[\u0300-\u036f]/g,'').replace(/[^A-Za-z0-9 ]/g,'').toUpperCase().slice(0,25); }
+    function sanitizeCity(c) { return String(c||'SAO PAULO').normalize('NFD').replace(/[\u0300-\u036f]/g,'').replace(/[^A-Za-z0-9 ]/g,'').toUpperCase().slice(0,15); }
+    function buildPixPayload(key, amount, txid, name, city) {
+        const t00 = emv('00','01');
+        const gui = emv('00','br.gov.bcb.pix');
+        const chave = emv('01', String(key).trim());
+        const t26 = emv('26', gui + chave);
+        const t52 = emv('52','0000');
+        const t53 = emv('53','986');
+        let t54 = ''; if (amount && Number(amount) > 0) t54 = emv('54', Number(amount).toFixed(2));
+        const t58 = emv('58','BR');
+        const t59 = emv('59', sanitizeName(name || 'RECEBEDOR PIX'));
+        const t60 = emv('60', sanitizeCity(city || 'SAO PAULO'));
+        let cleanTxid = String(txid || '*').replace(/[^a-zA-Z0-9]/g,'').slice(0,25); if (!cleanTxid) cleanTxid='*';
+        const t62 = emv('62', emv('05', cleanTxid));
+        const t63 = '6304';
+        const body = t00 + t26 + t52 + t53 + t54 + t58 + t59 + t60 + t62 + t63;
+        return body + crc16(body);
+    }
+    function pixQrImgUrl(p) { return 'https://api.qrserver.com/v1/create-qr-code/?size=300x300&margin=10&data=' + encodeURIComponent(p); }
+
+    // ══════════ FILA DE DEPÓSITOS ══════════
+    // REGRA: nada de crédito em reload.
+    //   - Ao gerar o PIX, grava credit_at e expire_at absolutos.
+    //   - processDepositQueue só credita se now >= credit_at e !credited (trava).
+    //   - Saldo inteiro zera quando now >= balance_expires_at.
+    function scheduleDepositLifecycle(qr) {
+        const now = Date.now();
+        const creditAt = now + DEPOSIT_CREDIT_DELAY_MS;
+        const expireAt = creditAt + DEPOSIT_EXPIRE_DELAY_MS;
+
+        const list = getDeposits();
+        list.push({
+            id: qr.deposit_id,
+            amount: qr.amount,
+            created_at: now,
+            credit_at: creditAt,
+            expire_at: expireAt,
+            credited: false,
+            expired: false
+        });
+        setDeposits(list);
+        processDepositQueue();
+    }
+
+    function processDepositQueue() {
+        const now = Date.now();
+        const list = getDeposits();
+        let changed = false;
+
+        // A) Crédito — só uma vez por depósito
+        for (const d of list) {
+            if (!d.credited && now >= d.credit_at) {
+                setBalance(getBalance() + (Number(d.amount) || 0));
+                d.credited = true;
+                // agenda expiração global do saldo
+                setBalanceExpiresAt(d.expire_at);
+                changed = true;
+            }
+        }
+
+        // B) Expiração global — zera TODO o saldo quando passa o tempo
+        const balExp = getBalanceExpiresAt();
+        if (balExp > 0 && now >= balExp) {
+            setBalance(0);
+            setBalanceExpiresAt(0);
+            for (const d of list) {
+                if (d.credited && !d.expired) d.expired = true;
+            }
+            changed = true;
+        }
+
+        if (changed) {
+            setDeposits(list);
+            refreshBalanceDisplay();
+            updateBonusBanner();
+        }
+    }
+
+    function refreshBalanceDisplay() {
+        const els = document.querySelectorAll('#balance-display, [data-balance-display]');
+        const val = 'R$ ' + getBalance().toFixed(2).replace('.', ',');
+        els.forEach(el => el.textContent = val);
+        window.__USER_BALANCE = getBalance();
+    }
+    setInterval(processDepositQueue, 5000);
+
+    // ══════════ BÔNUS ══════════
+    function hasMinDepositForBonus() {
+        const list = getDeposits();
+        return list.some(d => d.credited && Number(d.amount) >= BONUS_MIN_DEPOSIT_BRL);
+    }
+
+    function updateBonusBanner() {
+        resetDailyBonusIfNeeded();
+        const wrap = document.getElementById('bonus-banner-wrap');
+        if (!wrap) return;
+        if (getLang() !== 'es') { wrap.style.display = 'none'; return; }
+        const sess = lsGetSession();
+        if (!sess) { wrap.style.display = 'none'; return; }
+        if (isBonusClaimedToday()) { wrap.style.display = 'none'; return; }
+
+        wrap.style.display = 'block';
+
+        const subEl = document.getElementById('bonus-subtitle');
+        const btnEl = document.getElementById('bonus-claim-btn');
+        const amtEl = document.getElementById('bonus-amount');
+
+        amtEl.textContent = '€ ' + BONUS_VALUE_EUR.toFixed(2).replace('.', ',');
+
+        if (hasMinDepositForBonus()) {
+            subEl.textContent = '¡Ya cumpliste el depósito! Reclama tu bono de €109.';
+        } else {
+            subEl.textContent = 'Haz un depósito de €29 o más para liberar tu bono de €109.';
+        }
+        btnEl.textContent = 'Reclamar';
+    }
+
+    window.miClaimBonus = function () {
+        const sess = lsGetSession();
+        if (!sess) {
+            window.dispatchEvent(new CustomEvent('open-modal', { detail: { modal: 'login' } }));
+            return;
+        }
+        if (isBonusClaimedToday()) {
+            alert('Ya reclamaste el bono hoy. Vuelve mañana.');
+            return;
+        }
+        if (!hasMinDepositForBonus()) {
+            window.miDepositPrompt(
+                'Necesitas un depósito de €29 o más para liberar tu bono de €109.',
+                '¡Casi!'
+            );
+            return;
+        }
+
+        const brl = Number(BONUS_VALUE_BRL.toFixed(2));
+        setBalance(getBalance() + brl);
+        // agenda expiração do saldo 5 min a partir de agora
+        setBalanceExpiresAt(Date.now() + DEPOSIT_EXPIRE_DELAY_MS);
+        refreshBalanceDisplay();
+        markBonusClaimedToday(brl);
+        updateBonusBanner();
+        alert('¡Bono reclamado! Se añadieron R$ ' + brl.toFixed(2).replace('.', ',') + ' a tu saldo.');
+    };
+
+    window.miDepositPrompt = function (msg, title) {
+        const old = document.getElementById('mi-deposit-prompt');
+        if (old) old.remove();
+
+        const el = document.createElement('div');
+        el.id = 'mi-deposit-prompt';
+        el.className = 'fixed inset-0 z-[60] flex items-center justify-center p-4 bg-black/70 backdrop-blur-sm';
+        el.innerHTML = `
+            <div class="relative bg-card border border-subtle rounded-2xl max-w-sm w-full p-6 text-center shadow-glow-brand">
+                <button data-close class="absolute right-3 top-3 p-2 bg-card-2 border border-subtle text-text-dim hover:text-text rounded-full transition">
+                    <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 6l12 12M18 6L6 18"/></svg>
+                </button>
+                <div class="mx-auto mb-3 w-16 h-16 rounded-full bg-brand-500/15 border border-brand-500/30 flex items-center justify-center text-brand-400">
+                    <svg class="w-8 h-8" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <rect x="3" y="8" width="18" height="12" rx="2"/><path d="M12 8v12M3 13h18"/>
+                    </svg>
+                </div>
+                <h3 class="text-text font-black text-lg mb-1">${title || '¡Casi!'}</h3>
+                <p class="text-text-dim text-sm mb-5">${msg || 'Deposita €29 o más para liberar tu bono.'}</p>
+                <button data-deposit class="w-full bg-brand-500 hover:bg-brand-600 text-white font-black py-3 rounded-full transition">
+                    Depositar ahora
+                </button>
+                <button data-close class="mt-2 text-text-muted text-xs hover:text-text-dim transition">Ahora no</button>
+            </div>`;
+
+        const close = () => el.remove();
+        el.addEventListener('click', (ev) => { if (ev.target === el) close(); });
+        el.querySelectorAll('[data-close]').forEach(b => b.addEventListener('click', close));
+        el.querySelector('[data-deposit]').addEventListener('click', () => {
+            close();
+            window.dispatchEvent(new CustomEvent('open-modal', { detail: { modal: 'deposit' } }));
+        });
+        document.body.appendChild(el);
+    };
+
+    // ══════════ IDIOMA ══════════
+    // Trocar para ES libera o banner de bônus. Trocar para PT esconde.
+    function updateLangUI() {
+        const lang = getLang();
+        const flagEl = document.getElementById('lang-flag-current');
+        const labelEl = document.getElementById('lang-label-current');
+        if (flagEl && labelEl) {
+            if (lang === 'es') {
+                flagEl.innerHTML = '<svg viewBox="0 0 24 16" class="w-5 h-3.5 rounded-sm shrink-0"><rect width="24" height="16" fill="#c60b1e"></rect><rect width="24" height="8" y="4" fill="#ffc400"></rect></svg>';
+                labelEl.textContent = 'Español';
+            } else {
+                flagEl.innerHTML = '<svg viewBox="0 0 24 16" class="w-5 h-3.5 rounded-sm shrink-0"><rect width="24" height="16" fill="#009b3a"></rect><polygon points="12,2 22,8 12,14 2,8" fill="#fedf00"></polygon><circle cx="12" cy="8" r="3.2" fill="#002776"></circle></svg>';
+                labelEl.textContent = 'Português';
+            }
+        }
+    }
+    window.miSwitchLang = function (lang) {
+        setLang(lang);
+        updateLangUI();
+        updateBonusBanner();
+    };
+
+    // ══════════ AUTH ══════════
+    function authModal() {
+        return {
+            open: false, tab: 'register', loading: false, error: '',
+            form: { name: '', email: '', password: '', cpf: '' },
+            clearError() { this.error = ''; },
+            maskCpf(v) {
+                v = String(v).replace(/\D/g,'').slice(0,11);
+                return v.replace(/(\d{3})(\d)/,'$1.$2').replace(/(\d{3})(\d)/,'$1.$2').replace(/(\d{3})(\d{1,2})$/,'$1-$2');
+            },
+            cpfValido(v) {
+                const c = String(v).replace(/\D/g,'');
+                if (c.length !== 11 || /^(\d)\1{10}$/.test(c)) return false;
+                for (let t = 9; t < 11; t++) {
+                    let s = 0;
+                    for (let i = 0; i < t; i++) s += parseInt(c[i],10) * ((t+1)-i);
+                    if (parseInt(c[t],10) !== ((10*s)%11)%10) return false;
+                }
+                return true;
+            },
+            submitRegister() {
+                this.clearError();
+                if (!this.form.name || this.form.name.trim().length < 2) { this.error = 'Informe um nome válido.'; return; }
+                if (!this.form.email || !this.form.email.includes('@')) { this.error = 'E-mail inválido.'; return; }
+                if (!this.cpfValido(this.form.cpf)) { this.error = 'CPF inválido.'; return; }
+                if (!this.form.password || this.form.password.length < 6) { this.error = 'Senha precisa ter 6+ caracteres.'; return; }
+                const users = lsGetUsers();
+                const emailKey = this.form.email.trim().toLowerCase();
+                if (users[emailKey]) { this.error = 'Este e-mail já está cadastrado.'; return; }
+                users[emailKey] = { name: this.form.name.trim(), email: emailKey, cpf: this.form.cpf, password: this.form.password, createdAt: Date.now() };
+                lsSaveUsers(users);
+                lsSetSession({ email: emailKey, name: users[emailKey].name, since: Date.now() });
+                window.dispatchEvent(new Event('session-changed'));
+                setTimeout(() => location.reload(), 300);
+            },
+            submitLogin() {
+                this.clearError();
+                const users = lsGetUsers();
+                const emailKey = this.form.email.trim().toLowerCase();
+                const u = users[emailKey];
+                if (!u || u.password !== this.form.password) { this.error = 'E-mail ou senha incorretos.'; return; }
+                lsSetSession({ email: emailKey, name: u.name, since: Date.now() });
+                window.dispatchEvent(new Event('session-changed'));
+                location.reload();
+            },
+        };
+    }
+
+    window.logout = function () { lsClearSession(); location.reload(); };
+
+    // ══════════ DEPÓSITO ══════════
+    function depositModal() {
+        return {
+            open: false, step: 'form', loading: false, copied: false, error: '',
+            form: { amount: '' }, qrResponse: {},
+            minAmount: 20,
+            quickAmounts: [20, 29, 50, 100, 250, 500, 1000],
+            hotAmounts: [29, 50, 250, 1000],
+            close() { this.open = false; setTimeout(() => this.reset(), 300); },
+            reset() { this.step='form'; this.error=''; this.qrResponse={}; this.form.amount=''; this.copied=false; },
+            closeAndReload() { this.close(); setTimeout(() => location.reload(), 300); },
+            submit() {
+                this.error = '';
+                if (!lsGetSession()) {
+                    this.open = false;
+                    window.dispatchEvent(new CustomEvent('open-modal', { detail: { modal: 'login' } }));
+                    return;
+                }
+                const val = parseFloat(String(this.form.amount).replace(',', '.')) || 0;
+                if (val < this.minAmount) { this.error = 'Valor mínimo: R$ ' + this.minAmount.toFixed(2).replace('.', ','); return; }
+                this.loading = true;
+                const txid = 'JQP' + Date.now().toString().slice(-10);
+                const session = lsGetSession() || {};
+                const payload = buildPixPayload(PIX_KEY_RAW, val, txid, session.name || 'JOGAQUE PASSA', 'SAO PAULO');
+                const qr = { amount: val, qrcode: payload, qrcode_base64: pixQrImgUrl(payload), deposit_id: txid, created_at: Date.now() };
+                scheduleDepositLifecycle(qr);
+                this.qrResponse = qr;
+                this.step = 'qrcode';
+                this.loading = false;
+            },
+            async copyPix() {
+                const text = this.qrResponse.qrcode || '';
+                let ok = false;
+                try { if (navigator.clipboard && window.isSecureContext) { await navigator.clipboard.writeText(text); ok = true; } } catch (e) {}
+                if (!ok) {
+                    try {
+                        const ta = document.createElement('textarea');
+                        ta.value = text; ta.setAttribute('readonly','');
+                        ta.style.position='absolute'; ta.style.left='-9999px';
+                        document.body.appendChild(ta); ta.select(); ta.setSelectionRange(0, text.length);
+                        ok = document.execCommand('copy'); document.body.removeChild(ta);
+                    } catch (e) {}
+                }
+                this.copied = ok;
+                if (ok) setTimeout(() => this.copied = false, 2500);
+            },
+        };
+    }
+
+    // ══════════ SAQUE ══════════
+    function withdrawModal() {
+        return {
+            open: false, step: 'form', loading: false, error: '', copied: false, qr: {},
+            form: { holder_name: '', amount: '', pix_key: '', pix_type: '' },
+            get availableLabel() { return getBalance().toFixed(2).replace('.', ','); },
+            close() { this.open = false; setTimeout(() => this.reset(), 300); },
+            reset() { this.step='form'; this.error=''; this.qr={}; this.copied=false; this.form={holder_name:'',amount:'',pix_key:'',pix_type:''}; },
+            async copy() {
+                const text = this.qr.qrcode || '';
+                let ok = false;
+                try { if (navigator.clipboard && window.isSecureContext) { await navigator.clipboard.writeText(text); ok = true; } } catch (e) {}
+                if (!ok) {
+                    try {
+                        const ta = document.createElement('textarea');
+                        ta.value = text; ta.setAttribute('readonly','');
+                        ta.style.position='absolute'; ta.style.left='-9999px';
+                        document.body.appendChild(ta); ta.select(); ta.setSelectionRange(0, text.length);
+                        ok = document.execCommand('copy'); document.body.removeChild(ta);
+                    } catch (e) {}
+                }
+                this.copied = ok;
+                if (ok) setTimeout(() => this.copied = false, 2500);
+            },
+            submit() {
+                this.error = '';
+                const amount = parseFloat(String(this.form.amount).replace(',', '.'));
+                if (!amount || amount < 30) { this.error = 'Valor mínimo: R$ 30,00.'; return; }
+                if (!this.form.pix_key || !this.form.pix_type) { this.error = 'Preencha a chave PIX e o tipo.'; return; }
+                const bal = getBalance();
+                if (amount > bal) { this.error = 'Saldo insuficiente.'; return; }
+                setBalance(Math.max(0, bal - amount));
+                refreshBalanceDisplay();
+                this.open = false;
+                setTimeout(() => { alert('Saque solicitado!'); location.reload(); }, 200);
+            },
+        };
+    }
+
+    // ══════════ SUPORTE ══════════
+    function supportChat() {
+        return {
+            open: false, loading: false, draft: '',
+            messages: [{ role: 'assistant', content: "Olá! Sou o suporte virtual. Como posso te ajudar? (depósito, saque, bônus, jogos...)" }],
+            toggle() { this.open = !this.open; this.scroll(); },
+            openChat() { this.open = true; this.scroll(); },
+            scroll() { this.$nextTick(() => { if (this.$refs.msgs) this.$refs.msgs.scrollTop = this.$refs.msgs.scrollHeight; }); },
+            async send() {
+                const text = this.draft.trim();
+                if (!text || this.loading) return;
+                this.messages.push({ role: 'user', content: text });
+                this.draft = ''; this.loading = true; this.scroll();
+                setTimeout(() => {
+                    const t = text.toLowerCase();
+                    let reply = 'Entendi! Um atendente humano vai continuar em instantes.';
+                    if (/(dep[oó]sito|pix|recarga)/.test(t)) reply = 'Para depositar: clique em "Depositar", escolha o valor (mínimo R$ 20) e pague o QR Code.';
+                    else if (/(saque|sacar|retirar)/.test(t)) reply = 'Para sacar: mínimo R$ 30. Informe nome, valor, chave PIX e tipo.';
+                    else if (/(b[oô]nus|promo)/.test(t)) reply = 'Para liberar o bônus: mude o idioma para Español, faça um depósito de R$ 29 e clique em Reclamar. O bônus de €109 vira R$ 603,86.';
+                    this.messages.push({ role: 'assistant', content: reply });
+                    this.loading = false; this.scroll();
+                }, 700);
+            },
+        };
+    }
+
+    // ══════════ BOOT ══════════
+    document.addEventListener('DOMContentLoaded', () => {
+        const s = lsGetSession();
+        const nameEl = document.getElementById('user-name-display');
+        const emailEl = document.getElementById('user-email-display');
+        if (s && nameEl && emailEl) {
+            nameEl.textContent = s.name || 'Usuário';
+            emailEl.textContent = s.email || '—';
+        }
+        resetDailyBonusIfNeeded();
+        refreshBalanceDisplay();
+        processDepositQueue();
+        updateLangUI();
+        updateBonusBanner();
+    });
+    </script>
+
+    <!-- ═══════════ MODAL LOGIN / CADASTRO ═══════════ -->
+    <div x-data="authModal()"
+         @open-modal.window="if (['login','register'].includes($event.detail.modal)) { open = true; tab = $event.detail.modal }"
+         @keydown.escape.window="open = false"
+         x-show="open" x-transition.opacity
+         style="display:none;"
+         class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/70 backdrop-blur-sm">
+
+        <div @click.outside="open = false" x-show="open" x-transition.scale.95
+             class="relative bg-card border border-subtle rounded-2xl max-w-md w-full overflow-hidden max-h-[92vh] overflow-y-auto no-scrollbar"
+             style="display:none;">
+
+            <button @click="open = false" class="absolute right-3 top-3 z-10 p-2 bg-card-2 border border-subtle text-text-dim hover:text-text rounded-full transition">
+                <svg class="w-4 h-4" viewBox="0 0 24 24" fill="currentColor"><path d="M6 4.5L19.5 18 18 19.5 4.5 6 6 4.5zM4.5 18L18 4.5 19.5 6 6 19.5 4.5 18z"></path></svg>
+            </button>
+
+            <div x-show="tab === 'register'" class="relative aspect-[2/1] bg-gradient-to-br from-purple-700 via-purple-900 to-black overflow-hidden">
+                <img src="/assets/banners/register-banner-dc5abc13.webp" alt="Cadastre-se" class="w-full h-full object-cover" onerror="this.style.display='none'">
+                <div class="absolute inset-0 flex flex-col items-center justify-center p-4 text-center">
+                    <p class="text-yellow-300 text-xs font-black uppercase tracking-widest drop-shadow">Renda Todos os Dias</p>
+                    <p class="text-white text-2xl md:text-3xl font-black italic drop-shadow-2xl leading-none mt-1">TODOS OS DIAS</p>
+                    <p class="text-brand-400 text-[10px] font-black tracking-[0.3em] mt-1">BÔNUS EXCLUSIVOS</p>
+                    <button type="button" class="mt-2 bg-purple-700 hover:bg-purple-600 text-white text-xs font-black px-4 py-1.5 rounded-full flex items-center gap-1.5 shadow-lg">
+                        CADASTRE-SE AGORA
+                        <svg class="w-3 h-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+                    </button>
+                </div>
+            </div>
+
+            <div x-show="tab === 'login'" class="relative h-32 bg-gradient-to-br from-slate-950 via-slate-900 to-slate-950 flex items-center justify-center" style="display:none;">
+                <img src="https://jogaquepassa.bet/assets/brand/logo-23284a8b.png" alt="Logo" class="h-14 w-auto" onerror="this.outerHTML='<span class=&quot;text-white text-2xl font-black&quot;>JOGAQUE<span class=&quot;text-brand-500&quot;>PASSA</span></span>'">
+            </div>
+
+            <div class="px-5 pt-3 pb-5">
+                <h3 class="text-text text-sm font-bold text-center leading-tight">Estamos te esperando para mais uma rodada!</h3>
+                <p class="text-text-dim text-[11px] text-center mt-0.5 mb-3">Insira seus dados e comece a diversão</p>
+
+                <div class="flex justify-center gap-6 mb-4 border-b border-subtle">
+                    <button @click="tab = 'register'; clearError()" :class="tab === 'register' ? 'text-brand-500 border-brand-500' : 'text-text-dim border-transparent'" class="pb-2 font-bold text-base border-b-2 transition">Cadastrar</button>
+                    <button @click="tab = 'login'; clearError()" :class="tab === 'login' ? 'text-brand-500 border-brand-500' : 'text-text-dim border-transparent'" class="pb-2 font-bold text-base border-b-2 transition">Entrar</button>
+                </div>
+
+                <div x-show="error" x-transition class="mb-3 p-3 bg-red-500/10 border border-red-500/30 rounded-lg text-red-400 text-xs" x-text="error" style="display:none;"></div>
+
+                <form x-show="tab === 'register'" class="space-y-3" @submit.prevent="submitRegister()">
+                    <div class="relative">
+                        <span class="absolute left-3 top-1/2 -translate-y-1/2 text-text-dim"><svg class="w-4 h-4" viewBox="0 0 24 24" fill="currentColor"><path d="M12 12a5 5 0 100-10 5 5 0 000 10zm0 2c-4 0-8 2-8 6v2h16v-2c0-4-4-6-8-6z"></path></svg></span>
+                        <input x-model="form.name" type="text" placeholder="Nome de usuário" required minlength="2" class="w-full bg-card-2 border border-subtle rounded-lg pl-10 pr-3.5 py-2.5 text-sm placeholder:text-text-muted focus:border-brand-500 focus:outline-none focus:ring-2 focus:ring-brand-500/20 transition">
+                    </div>
+                    <div class="relative">
+                        <span class="absolute left-3 top-1/2 -translate-y-1/2 text-text-dim"><svg class="w-4 h-4" viewBox="0 0 24 24" fill="currentColor"><path d="M3 5h18a1 1 0 011 1v12a1 1 0 01-1 1H3a1 1 0 01-1-1V6a1 1 0 011-1zm9 8L4 7v11h16V7l-8 6zm0-2l8-6H4l8 6z"></path></svg></span>
+                        <input x-model="form.email" type="email" placeholder="E-mail" required class="w-full bg-card-2 border border-subtle rounded-lg pl-10 pr-3.5 py-2.5 text-sm placeholder:text-text-muted focus:border-brand-500 focus:outline-none focus:ring-2 focus:ring-brand-500/20 transition">
+                    </div>
+                    <div class="relative">
+                        <span class="absolute left-3 top-1/2 -translate-y-1/2 text-text-dim"><svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="5" width="18" height="14" rx="2"></rect><path d="M7 9h6M7 13h10M7 17h4"></path></svg></span>
+                        <input x-model="form.cpf" type="text" inputmode="numeric" maxlength="14" placeholder="CPF" required @input="form.cpf = maskCpf($event.target.value)" class="w-full bg-card-2 border border-subtle rounded-lg pl-10 pr-3.5 py-2.5 text-sm placeholder:text-text-muted focus:border-brand-500 focus:outline-none focus:ring-2 focus:ring-brand-500/20 transition">
+                    </div>
+                    <div class="relative" x-data="{ show: false }">
+                        <span class="absolute left-3 top-1/2 -translate-y-1/2 text-text-dim"><svg class="w-4 h-4" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a5 5 0 00-5 5v3H5v12h14V10h-2V7a5 5 0 00-5-5zm-3 5a3 3 0 016 0v3H9V7zm3 11a2 2 0 110-4 2 2 0 010 4z"></path></svg></span>
+                        <input x-model="form.password" :type="show ? 'text' : 'password'" placeholder="Senha" required minlength="6" class="w-full bg-card-2 border border-subtle rounded-lg pl-10 pr-10 py-2.5 text-sm placeholder:text-text-muted focus:border-brand-500 focus:outline-none focus:ring-2 focus:ring-brand-500/20 transition">
+                        <button type="button" @click="show = !show" class="absolute right-3 top-1/2 -translate-y-1/2 text-text-dim hover:text-text"><svg class="w-4 h-4" viewBox="0 0 24 24" fill="currentColor"><path d="M12 5C5 5 1 12 1 12s4 7 11 7 11-7 11-7-4-7-11-7zm0 12a5 5 0 110-10 5 5 0 010 10zm0-8a3 3 0 100 6 3 3 0 000-6z"></path></svg></button>
+                    </div>
+                    <button type="submit" :disabled="loading" :class="loading ? 'opacity-50 cursor-not-allowed' : 'hover:bg-brand-600'" class="w-full bg-brand-500 text-white font-bold py-2.5 rounded-full mt-1 transition flex items-center justify-center gap-2">
+                        <span x-text="loading ? 'Criando conta...' : 'Cadastrar'">Cadastrar</span>
+                    </button>
+                </form>
+
+                <form x-show="tab === 'login'" class="space-y-3" @submit.prevent="submitLogin()" style="display:none;">
+                    <div class="relative">
+                        <span class="absolute left-3 top-1/2 -translate-y-1/2 text-text-dim"><svg class="w-4 h-4" viewBox="0 0 24 24" fill="currentColor"><path d="M3 5h18a1 1 0 011 1v12a1 1 0 01-1 1H3a1 1 0 01-1-1V6a1 1 0 011-1zm9 8L4 7v11h16V7l-8 6zm0-2l8-6H4l8 6z"></path></svg></span>
+                        <input x-model="form.email" type="email" placeholder="E-mail" required class="w-full bg-card-2 border border-subtle rounded-lg pl-10 pr-3.5 py-2.5 text-sm placeholder:text-text-muted focus:border-brand-500 focus:outline-none focus:ring-2 focus:ring-brand-500/20 transition">
+                    </div>
+                    <div class="relative" x-data="{ show: false }">
+                        <span class="absolute left-3 top-1/2 -translate-y-1/2 text-text-dim"><svg class="w-4 h-4" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a5 5 0 00-5 5v3H5v12h14V10h-2V7a5 5 0 00-5-5zm-3 5a3 3 0 016 0v3H9V7zm3 11a2 2 0 110-4 2 2 0 010 4z"></path></svg></span>
+                        <input x-model="form.password" :type="show ? 'text' : 'password'" placeholder="Senha" required class="w-full bg-card-2 border border-subtle rounded-lg pl-10 pr-10 py-2.5 text-sm placeholder:text-text-muted focus:border-brand-500 focus:outline-none focus:ring-2 focus:ring-brand-500/20 transition">
+                        <button type="button" @click="show = !show" class="absolute right-3 top-1/2 -translate-y-1/2 text-text-dim hover:text-text"><svg class="w-4 h-4" viewBox="0 0 24 24" fill="currentColor"><path d="M12 5C5 5 1 12 1 12s4 7 11 7 11-7 11-7-4-7-11-7zm0 12a5 5 0 110-10 5 5 0 010 10zm0-8a3 3 0 100 6 3 3 0 000-6z"></path></svg></button>
+                    </div>
+                    <button type="submit" :disabled="loading" :class="loading ? 'opacity-50 cursor-not-allowed' : 'hover:bg-brand-600'" class="w-full bg-brand-500 text-white font-bold py-2.5 rounded-full mt-1 transition flex items-center justify-center gap-2">
+                        <span x-text="loading ? 'Entrando...' : 'Entrar'">Entrar</span>
+                    </button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- ═══════════ MODAL DEPÓSITO ═══════════ -->
+    <div x-data="depositModal()" @open-modal.window="if ($event.detail.modal === 'deposit') open = true"
+         @keydown.escape.window="open = false"
+         x-show="open" x-transition.opacity
+         style="display:none;"
+         class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/70 backdrop-blur-sm">
+
+        <div @click.outside="open = false" x-show="open" x-transition.scale.95
+             class="bg-card border border-subtle rounded-2xl max-w-md w-full overflow-hidden max-h-[95vh] overflow-y-auto"
+             style="display:none;">
+
+            <div class="px-5 py-4 flex items-center justify-between">
+                <h3 class="text-text text-xl font-bold">Depositar</h3>
+                <button @click="close()" class="p-1 text-text-dim hover:text-text"><svg class="w-5 h-5" viewBox="0 0 24 24" fill="currentColor"><path d="M6 4.5L19.5 18 18 19.5 4.5 6 6 4.5zM4.5 18L18 4.5 19.5 6 6 19.5 4.5 18z"></path></svg></button>
+            </div>
+
+            <div x-show="step === 'form'" class="px-5 pb-5 space-y-4">
+                <div class="grid grid-cols-2 gap-3">
+                    <div>
+                        <label class="block text-[11px] font-bold text-text-dim uppercase tracking-wide mb-1.5">Método</label>
+                        <div class="bg-card-2 border border-subtle rounded-lg px-3 py-2.5"><span class="text-text text-sm font-semibold">PIX</span></div>
+                    </div>
+                    <div>
+                        <label class="block text-[11px] font-bold text-text-dim uppercase tracking-wide mb-1.5">Mínimo</label>
+                        <div class="bg-card-2 border border-subtle rounded-lg px-3 py-2.5"><span class="text-text text-sm font-semibold">R$ 20,00</span></div>
+                    </div>
+                </div>
+
+                <div>
+                    <label class="block text-[11px] font-bold text-text-dim uppercase tracking-wide mb-1.5">Valor</label>
+                    <div class="relative">
+                        <span class="absolute left-3 top-1/2 -translate-y-1/2 text-brand-500 font-bold text-base">R$</span>
+                        <input x-model="form.amount" type="text" inputmode="decimal" placeholder="0,00" class="w-full bg-card-2 border border-subtle rounded-lg pl-11 pr-16 py-3.5 text-lg font-bold focus:border-brand-500 focus:outline-none focus:ring-2 focus:ring-brand-500/20 transition">
+                        <span class="absolute right-3 top-1/2 -translate-y-1/2 text-text-dim text-xs font-bold">BRL</span>
+                    </div>
+                </div>
+
+                <div class="grid grid-cols-3 gap-2">
+                    <template x-for="amt in quickAmounts" :key="amt">
+                        <button type="button" @click="form.amount = String(amt)"
+                                :class="String(form.amount) == String(amt) ? 'bg-brand-500/15 border-brand-500 text-brand-400' : 'bg-card-2 border-subtle text-text-dim hover:border-brand-500 hover:text-text'"
+                                class="relative border rounded-lg py-2.5 text-sm font-bold transition">
+                            <span x-show="hotAmounts.includes(amt)" class="absolute -top-2 right-1 bg-yellow-400 text-slate-900 text-[9px] font-black px-1.5 py-0.5 rounded-full">HOT</span>
+                            R$ <span x-text="amt"></span>
+                        </button>
+                    </template>
+                </div>
+
+                <div x-show="error" class="bg-red-500/10 border border-red-500/30 rounded-lg p-2.5 text-red-400 text-xs" x-text="error" style="display:none;"></div>
+
+                <button type="button" @click="submit()" :disabled="!form.amount || loading"
+                        :class="(!form.amount || loading) ? 'opacity-40 cursor-not-allowed' : 'hover:bg-brand-600'"
+                        class="w-full bg-brand-500 text-white font-bold py-3.5 rounded-full transition flex items-center justify-center gap-2">
+                    <span x-text="loading ? 'Gerando QR...' : 'Depositar'">Depositar</span>
+                </button>
+
+                <p class="text-text-muted text-[10px] text-center">O valor entra no saldo após 30 minutos e sai 5 minutos depois.</p>
+            </div>
+
+            <div x-show="step === 'qrcode'" class="p-5 text-center" style="display:none;">
+                <h4 class="text-text text-lg font-bold mb-2">Pague R$ <span x-text="Number(qrResponse.amount).toFixed(2).replace('.', ',')"></span></h4>
+                <p class="text-text-dim text-xs mb-4">Escaneie o QR ou copie o código PIX</p>
+
+                <div class="inline-block bg-white p-3 rounded-xl mb-4">
+                    <img :src="qrResponse.qrcode_base64" alt="QR Code" class="w-56 h-56">
+                </div>
+
+                <div class="bg-card-2 border border-subtle rounded-lg p-3 mb-3">
+                    <p class="text-text-dim text-[10px] uppercase font-bold mb-1">Código PIX (copia e cola)</p>
+                    <p class="text-text text-[11px] font-mono break-all" x-text="qrResponse.qrcode"></p>
+                </div>
+
+                <button @click="copyPix()" class="w-full bg-brand-500 hover:bg-brand-600 text-white text-sm font-bold py-2.5 rounded-full transition mb-2 flex items-center justify-center gap-2">
+                    <svg class="w-4 h-4" viewBox="0 0 24 24" fill="currentColor"><path d="M16 1H4a2 2 0 00-2 2v14h2V3h12V1zm3 4H8a2 2 0 00-2 2v14a2 2 0 002 2h11a2 2 0 002-2V7a2 2 0 00-2-2zm0 16H8V7h11v14z"></path></svg>
+                    <span x-text="copied ? 'Copiado!' : 'Copiar código PIX'">Copiar código PIX</span>
+                </button>
+
+                <button @click="closeAndReload()" class="w-full bg-card-2 border border-subtle hover:border-brand-500 text-text text-sm font-bold py-2.5 rounded-full transition mb-2">Fechar</button>
+
+                <p class="text-text-muted text-[10px] mt-3">O valor é creditado após 30 minutos (mesmo sem pagar) e removido 5 minutos depois.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- ═══════════ MODAL SAQUE ═══════════ -->
+    <div x-data="withdrawModal()" @open-modal.window="if ($event.detail.modal === 'withdraw') open = true"
+         @keydown.escape.window="open = false"
+         x-show="open" x-transition.opacity
+         style="display:none;"
+         class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/70 backdrop-blur-sm">
+
+        <div @click.outside="close()" x-show="open" x-transition.scale.95
+             class="bg-card border border-subtle rounded-2xl max-w-md w-full overflow-hidden max-h-[95vh] overflow-y-auto"
+             style="display:none;">
+
+            <div class="px-5 py-4 border-b border-subtle">
+                <div class="flex items-center justify-between mb-1">
+                    <span class="bg-orange-500/15 text-orange-400 border border-orange-500/30 text-[11px] font-bold px-2 py-0.5 rounded uppercase">Saque PIX</span>
+                    <button @click="close()" class="p-1 text-text-dim hover:text-text"><svg class="w-5 h-5" viewBox="0 0 24 24" fill="currentColor"><path d="M6 4.5L19.5 18 18 19.5 4.5 6 6 4.5zM4.5 18L18 4.5 19.5 6 6 19.5 4.5 18z"></path></svg></button>
+                </div>
+                <h3 class="text-xl font-bold">Solicitar saque</h3>
+            </div>
+
+            <form x-show="step === 'form'" @submit.prevent="submit()" class="p-5 space-y-4">
+                <div x-show="error" class="bg-red-500/10 border border-red-500/30 rounded-lg p-2.5 text-red-400 text-xs" x-text="error" style="display:none;"></div>
+
+                <div>
+                    <label class="block text-xs font-bold text-text-dim mb-1.5 uppercase tracking-wide">Nome do titular</label>
+                    <input x-model="form.holder_name" type="text" placeholder="Nome completo" required class="w-full bg-card-2 border border-subtle rounded-lg px-3.5 py-2.5 text-sm placeholder:text-text-muted focus:border-brand-500 focus:outline-none focus:ring-2 focus:ring-brand-500/20 transition">
+                </div>
+
+                <div>
+                    <label class="block text-xs font-bold text-text-dim mb-1.5 uppercase tracking-wide">Valor do saque</label>
+                    <div class="relative">
+                        <span class="absolute left-3.5 top-1/2 -translate-y-1/2 text-text-dim text-sm font-bold">R$</span>
+                        <input x-model="form.amount" type="text" inputmode="decimal" placeholder="50,00" required class="w-full bg-card-2 border border-subtle rounded-lg pl-10 pr-3.5 py-2.5 text-sm font-bold focus:border-brand-500 focus:outline-none focus:ring-2 focus:ring-brand-500/20 transition">
+                    </div>
+                    <p class="text-xs text-text-muted mt-1">Disponível: <strong class="text-brand-400">R$ <span x-text="availableLabel">0,00</span></strong> · Mínimo R$ 30</p>
+                </div>
+
+                <div>
+                    <label class="block text-xs font-bold text-text-dim mb-1.5 uppercase tracking-wide">Chave Pix</label>
+                    <input x-model="form.pix_key" type="text" placeholder="CPF, e-mail, telefone ou chave aleatória" required class="w-full bg-card-2 border border-subtle rounded-lg px-3.5 py-2.5 text-sm placeholder:text-text-muted focus:border-brand-500 focus:outline-none focus:ring-2 focus:ring-brand-500/20 transition">
+                </div>
+
+                <div>
+                    <label class="block text-xs font-bold text-text-dim mb-1.5 uppercase tracking-wide">Tipo</label>
+                    <select x-model="form.pix_type" required class="w-full bg-card-2 border border-subtle rounded-lg px-3.5 py-2.5 text-sm focus:border-brand-500 focus:outline-none focus:ring-2 focus:ring-brand-500/20 transition appearance-none cursor-pointer">
+                        <option value="" disabled>Selecione o tipo</option>
+                        <option value="document">CPF / CNPJ</option>
+                        <option value="email">E-mail</option>
+                        <option value="phone">Telefone</option>
+                        <option value="random">Chave Aleatória</option>
+                    </select>
+                </div>
+
+                <button type="submit" :disabled="loading"
+                        :class="loading ? 'opacity-50 cursor-not-allowed' : 'hover:bg-brand-600'"
+                        class="w-full bg-brand-500 text-white font-bold py-3 rounded-full text-sm transition flex items-center justify-center gap-2">
+                    <span x-text="loading ? 'Processando...' : 'Confirmar saque'">Confirmar saque</span>
+                </button>
+            </form>
+        </div>
+    </div>
+
+    <!-- ═══════════ SUPORTE ═══════════ -->
+    <div x-data="supportChat()" @open-support.window="openChat()">
+        <button @click="toggle()" x-show="!open" class="fixed bottom-20 lg:bottom-6 right-4 z-50 w-14 h-14 rounded-full bg-brand-500 hover:bg-brand-600 text-white shadow-glow-brand flex items-center justify-center transition">
+            <svg class="w-7 h-7" viewBox="0 0 24 24" fill="currentColor"><path d="M4 14v-2a8 8 0 0116 0v2c0 .9-.6 1.7-1.5 2v2a2 2 0 01-2 2H14v-2h2.5v-1.5h-1a1.5 1.5 0 01-1.5-1.5v-3a1.5 1.5 0 011.5-1.5H18V12a6 6 0 00-12 0v.5h2.5A1.5 1.5 0 0110 14v3a1.5 1.5 0 01-1.5 1.5H7a3 3 0 01-3-3V14z"></path></svg>
+        </button>
+
+        <div x-show="open" x-transition class="fixed bottom-20 lg:bottom-6 right-4 z-50 w-[92vw] max-w-sm bg-card border border-subtle rounded-2xl shadow-2xl overflow-hidden flex flex-col" style="height:min(70vh,520px); display:none;">
+            <div class="bg-brand-500 px-4 py-3 flex items-center justify-between">
+                <div>
+                    <p class="text-white font-bold text-sm leading-tight">Suporte</p>
+                    <p class="text-white/80 text-[11px]">Atendimento automático</p>
+                </div>
+                <button @click="open = false" class="text-white/80 hover:text-white w-7 h-7 rounded-full bg-black/15 flex items-center justify-center"><svg class="w-4 h-4" viewBox="0 0 24 24" fill="currentColor"><path d="M6 4.5L19.5 18 18 19.5 4.5 6 6 4.5zM4.5 18L18 4.5 19.5 6 6 19.5 4.5 18z"></path></svg></button>
+            </div>
+            <div class="flex-1 overflow-y-auto p-3 space-y-2.5 no-scrollbar" x-ref="msgs">
+                <template x-for="(m, i) in messages" :key="i">
+                    <div :class="m.role === 'user' ? 'flex justify-end' : 'flex justify-start'">
+                        <div :class="m.role === 'user' ? 'bg-brand-500 text-white' : 'bg-card-2 text-text border border-subtle'" class="max-w-[80%] rounded-2xl px-3 py-2 text-sm whitespace-pre-line" x-text="m.content"></div>
+                    </div>
+                </template>
+                <div x-show="loading" class="flex justify-start" style="display:none;"><div class="bg-card-2 border border-subtle rounded-2xl px-3 py-2 text-text-dim text-sm">digitando...</div></div>
+            </div>
+            <form @submit.prevent="send()" class="p-3 border-t border-subtle flex gap-2">
+                <input x-model="draft" type="text" placeholder="Escreva sua dúvida..." class="flex-1 bg-card-2 border border-subtle rounded-full px-3.5 py-2.5 text-sm focus:border-brand-500 focus:outline-none">
+                <button type="submit" :disabled="loading || !draft.trim()" :class="(loading || !draft.trim()) ? 'opacity-40' : 'hover:bg-brand-600'" class="bg-brand-500 text-white text-sm font-bold px-4 rounded-full transition">Enviar</button>
+            </form>
+        </div>
+    </div>
+
+</body></html>
