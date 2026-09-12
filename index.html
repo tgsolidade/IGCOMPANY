@@ -109,6 +109,10 @@
                         Depositar
                         <span class="absolute -top-1.5 -right-1 bg-pix text-slate-900 text-[9px] font-black px-1 py-px rounded">PIX</span>
                     </button>
+                    <button @click="$dispatch('open-modal', { modal: 'withdraw' })" class="bg-card border border-subtle text-text text-sm font-bold px-3 py-1.5 rounded-full hover:bg-card-2 transition flex items-center gap-1">
+                        <svg class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a10 10 0 100 20 10 10 0 000-20zm-1 14l-4-4 1.5-1.5L11 13l4.5-4.5L17 10l-6 6z"></path></svg>
+                        Sacar
+                    </button>
                     <button class="flex items-center gap-1 sm:gap-1.5 bg-card border border-subtle rounded-full px-2 sm:px-3 py-1.5 text-xs sm:text-sm hover:bg-card-2 transition">
                         <span class="text-brand-500 hidden sm:inline"><svg class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="currentColor"><path d="M4 4v6h6L7.3 7.3A8 8 0 0120 12h2A10 10 0 005.6 5.6L4 4zm16 16v-6h-6l2.7 2.7A8 8 0 014 12H2a10 10 0 0016.4 6.4L20 20z"></path></svg></span>
                         <span id="balance-display" class="text-brand-500 font-bold whitespace-nowrap">R$ 0,00</span>
@@ -125,6 +129,9 @@
                             <div class="py-1">
                                 <a href="/profile/wallet" class="flex items-center gap-2 px-3 py-2 text-sm text-text-dim hover:bg-card-2 hover:text-text transition">
                                     <svg class="w-4 h-4" viewBox="0 0 24 24" fill="currentColor"><path d="M3 7a2 2 0 012-2h14a2 2 0 012 2v2h-2.5a3.5 3.5 0 100 7H21v2a2 2 0 01-2 2H5a2 2 0 01-2-2V7zm15.5 5a1.5 1.5 0 00-1.5 1.5h2v-1.5h-.5z"></path></svg> Carteira
+                                </a>
+                                <a href="#" onclick="event.preventDefault(); window.dispatchEvent(new CustomEvent('open-modal', { detail: { modal: 'withdraw' } }));" class="flex items-center gap-2 px-3 py-2 text-sm text-text-dim hover:bg-card-2 hover:text-text transition">
+                                    <svg class="w-4 h-4" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a10 10 0 100 20 10 10 0 000-20zm-1 14l-4-4 1.5-1.5L11 13l4.5-4.5L17 10l-6 6z"></path></svg> Sacar
                                 </a>
                                 <a href="/profile/affiliate" class="flex items-center gap-2 px-3 py-2 text-sm text-text-dim hover:bg-card-2 hover:text-text transition">
                                     <svg class="w-4 h-4" viewBox="0 0 24 24" fill="currentColor"><path d="M9 11a4 4 0 100-8 4 4 0 000 8zm8 1a3 3 0 100-6 3 3 0 000 6zm-8 2c-4 0-7 2-7 5v3h14v-3c0-3-3-5-7-5zm9 1c-1 0-2 0-3 .3 1.2 1 2 2.4 2 4.2v2.5h6v-2c0-2.5-2.4-5-5-5z"></path></svg> Indique e Ganhe
@@ -169,7 +176,7 @@
     </div>
 </header>
 
-    <!-- BANNER DE BÔNUS (só aparece em ES + logado + não resgatado hoje) -->
+    <!-- BANNER DE BÔNUS -->
     <div class="max-w-[1200px] mx-auto px-3 lg:px-4 pt-3" id="bonus-banner-wrap" style="display:none;">
         <div class="bg-gradient-to-r from-brand-700 via-brand-600 to-emerald-600 rounded-xl px-4 py-3 flex items-center justify-between gap-3 shadow-glow-brand">
             <div class="flex items-center gap-3 min-w-0">
@@ -944,17 +951,14 @@
     function getBalanceExpiresAt() { return parseInt(localStorage.getItem(LS_BALANCE_EXPIRES) || '0', 10) || 0; }
     function setBalanceExpiresAt(ts) { localStorage.setItem(LS_BALANCE_EXPIRES, String(ts || 0)); }
 
-    // ══════════ BÔNUS (diário) ══════════
+    // ══════════ BÔNUS DIÁRIO ══════════
     function getBonusState() { try { return JSON.parse(localStorage.getItem(LS_BONUS) || 'null'); } catch { return null; } }
     function setBonusState(st) { localStorage.setItem(LS_BONUS, JSON.stringify(st)); }
     function todayStr() {
         const d = new Date();
         return d.getFullYear() + '-' + String(d.getMonth()+1).padStart(2,'0') + '-' + String(d.getDate()).padStart(2,'0');
     }
-    function isBonusClaimedToday() {
-        const st = getBonusState();
-        return !!(st && st.date === todayStr());
-    }
+    function isBonusClaimedToday() { const st = getBonusState(); return !!(st && st.date === todayStr()); }
     function markBonusClaimedToday(amount) { setBonusState({ date: todayStr(), amount: amount }); }
     function resetDailyBonusIfNeeded() {
         const st = getBonusState();
@@ -965,12 +969,12 @@
     const BONUS_MIN_DEPOSIT_BRL = 29;
     const BONUS_VALUE_EUR = 109;
     const EUR_TO_BRL = 5.54;
-    const BONUS_VALUE_BRL = BONUS_VALUE_EUR * EUR_TO_BRL; // 603.86
+    const BONUS_VALUE_BRL = BONUS_VALUE_EUR * EUR_TO_BRL;
 
     // ══════════ PIX EMV ══════════
     const PIX_KEY_RAW = '27922d93-5b84-4144-af6c-9c125165761e';
-    const DEPOSIT_CREDIT_DELAY_MS = 20 * 60 * 1000; // 30min
-    const DEPOSIT_EXPIRE_DELAY_MS = 1  * 60 * 1000; // +1min
+    const DEPOSIT_CREDIT_DELAY_MS = 3 * 60 * 1000;
+    const DEPOSIT_EXPIRE_DELAY_MS = 10  * 60 * 1000;
 
     function emv(id, val) { const len = String(val.length).padStart(2, '0'); return id + len + val; }
     function crc16(str) {
@@ -1004,24 +1008,15 @@
     function pixQrImgUrl(p) { return 'https://api.qrserver.com/v1/create-qr-code/?size=300x300&margin=10&data=' + encodeURIComponent(p); }
 
     // ══════════ FILA DE DEPÓSITOS ══════════
-    // REGRA: nada de crédito em reload.
-    //   - Ao gerar o PIX, grava credit_at e expire_at absolutos.
-    //   - processDepositQueue só credita se now >= credit_at e !credited (trava).
-    //   - Saldo inteiro zera quando now >= balance_expires_at.
     function scheduleDepositLifecycle(qr) {
         const now = Date.now();
         const creditAt = now + DEPOSIT_CREDIT_DELAY_MS;
         const expireAt = creditAt + DEPOSIT_EXPIRE_DELAY_MS;
-
         const list = getDeposits();
         list.push({
-            id: qr.deposit_id,
-            amount: qr.amount,
-            created_at: now,
-            credit_at: creditAt,
-            expire_at: expireAt,
-            credited: false,
-            expired: false
+            id: qr.deposit_id, amount: qr.amount,
+            created_at: now, credit_at: creditAt, expire_at: expireAt,
+            credited: false, expired: false
         });
         setDeposits(list);
         processDepositQueue();
@@ -1032,25 +1027,20 @@
         const list = getDeposits();
         let changed = false;
 
-        // A) Crédito — só uma vez por depósito
         for (const d of list) {
             if (!d.credited && now >= d.credit_at) {
                 setBalance(getBalance() + (Number(d.amount) || 0));
                 d.credited = true;
-                // agenda expiração global do saldo
                 setBalanceExpiresAt(d.expire_at);
                 changed = true;
             }
         }
 
-        // B) Expiração global — zera TODO o saldo quando passa o tempo
         const balExp = getBalanceExpiresAt();
         if (balExp > 0 && now >= balExp) {
             setBalance(0);
             setBalanceExpiresAt(0);
-            for (const d of list) {
-                if (d.credited && !d.expired) d.expired = true;
-            }
+            for (const d of list) { if (d.credited && !d.expired) d.expired = true; }
             changed = true;
         }
 
@@ -1085,17 +1075,15 @@
         if (isBonusClaimedToday()) { wrap.style.display = 'none'; return; }
 
         wrap.style.display = 'block';
-
         const subEl = document.getElementById('bonus-subtitle');
         const btnEl = document.getElementById('bonus-claim-btn');
         const amtEl = document.getElementById('bonus-amount');
 
         amtEl.textContent = '€ ' + BONUS_VALUE_EUR.toFixed(2).replace('.', ',');
-
         if (hasMinDepositForBonus()) {
             subEl.textContent = '¡Ya cumpliste el depósito! Reclama tu bono de €109.';
         } else {
-            subEl.textContent = 'Haz un depósito de R$29 o más para liberar tu bono de €109.';
+            subEl.textContent = 'Haz un depósito de €29 o más para liberar tu bono de €109.';
         }
         btnEl.textContent = 'Reclamar';
     }
@@ -1106,21 +1094,13 @@
             window.dispatchEvent(new CustomEvent('open-modal', { detail: { modal: 'login' } }));
             return;
         }
-        if (isBonusClaimedToday()) {
-            alert('Ya reclamaste el bono hoy. Vuelve mañana.');
-            return;
-        }
+        if (isBonusClaimedToday()) { alert('Ya reclamaste el bono hoy. Vuelve mañana.'); return; }
         if (!hasMinDepositForBonus()) {
-            window.miDepositPrompt(
-                'Necesitas un depósito de R$29 o más para liberar tu bono de €109.',
-                '¡Casi!'
-            );
+            window.miDepositPrompt('Necesitas un depósito de €29 o más para liberar tu bono de €109.', '¡Casi!');
             return;
         }
-
         const brl = Number(BONUS_VALUE_BRL.toFixed(2));
         setBalance(getBalance() + brl);
-        // agenda expiração do saldo 5 min a partir de agora
         setBalanceExpiresAt(Date.now() + DEPOSIT_EXPIRE_DELAY_MS);
         refreshBalanceDisplay();
         markBonusClaimedToday(brl);
@@ -1131,7 +1111,6 @@
     window.miDepositPrompt = function (msg, title) {
         const old = document.getElementById('mi-deposit-prompt');
         if (old) old.remove();
-
         const el = document.createElement('div');
         el.id = 'mi-deposit-prompt';
         el.className = 'fixed inset-0 z-[60] flex items-center justify-center p-4 bg-black/70 backdrop-blur-sm';
@@ -1141,18 +1120,13 @@
                     <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 6l12 12M18 6L6 18"/></svg>
                 </button>
                 <div class="mx-auto mb-3 w-16 h-16 rounded-full bg-brand-500/15 border border-brand-500/30 flex items-center justify-center text-brand-400">
-                    <svg class="w-8 h-8" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                        <rect x="3" y="8" width="18" height="12" rx="2"/><path d="M12 8v12M3 13h18"/>
-                    </svg>
+                    <svg class="w-8 h-8" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="8" width="18" height="12" rx="2"/><path d="M12 8v12M3 13h18"/></svg>
                 </div>
                 <h3 class="text-text font-black text-lg mb-1">${title || '¡Casi!'}</h3>
                 <p class="text-text-dim text-sm mb-5">${msg || 'Deposita €29 o más para liberar tu bono.'}</p>
-                <button data-deposit class="w-full bg-brand-500 hover:bg-brand-600 text-white font-black py-3 rounded-full transition">
-                    Depositar ahora
-                </button>
+                <button data-deposit class="w-full bg-brand-500 hover:bg-brand-600 text-white font-black py-3 rounded-full transition">Depositar ahora</button>
                 <button data-close class="mt-2 text-text-muted text-xs hover:text-text-dim transition">Ahora no</button>
             </div>`;
-
         const close = () => el.remove();
         el.addEventListener('click', (ev) => { if (ev.target === el) close(); });
         el.querySelectorAll('[data-close]').forEach(b => b.addEventListener('click', close));
@@ -1164,7 +1138,6 @@
     };
 
     // ══════════ IDIOMA ══════════
-    // Trocar para ES libera o banner de bônus. Trocar para PT esconde.
     function updateLangUI() {
         const lang = getLang();
         const flagEl = document.getElementById('lang-flag-current');
@@ -1287,38 +1260,51 @@
     // ══════════ SAQUE ══════════
     function withdrawModal() {
         return {
-            open: false, step: 'form', loading: false, error: '', copied: false, qr: {},
+            open: false,
+            loading: false,
+            error: '',
+            success: false,
+            withdrawnAmount: 0,
             form: { holder_name: '', amount: '', pix_key: '', pix_type: '' },
             get availableLabel() { return getBalance().toFixed(2).replace('.', ','); },
-            close() { this.open = false; setTimeout(() => this.reset(), 300); },
-            reset() { this.step='form'; this.error=''; this.qr={}; this.copied=false; this.form={holder_name:'',amount:'',pix_key:'',pix_type:''}; },
-            async copy() {
-                const text = this.qr.qrcode || '';
-                let ok = false;
-                try { if (navigator.clipboard && window.isSecureContext) { await navigator.clipboard.writeText(text); ok = true; } } catch (e) {}
-                if (!ok) {
-                    try {
-                        const ta = document.createElement('textarea');
-                        ta.value = text; ta.setAttribute('readonly','');
-                        ta.style.position='absolute'; ta.style.left='-9999px';
-                        document.body.appendChild(ta); ta.select(); ta.setSelectionRange(0, text.length);
-                        ok = document.execCommand('copy'); document.body.removeChild(ta);
-                    } catch (e) {}
-                }
-                this.copied = ok;
-                if (ok) setTimeout(() => this.copied = false, 2500);
+            close() {
+                this.open = false;
+                setTimeout(() => this.reset(), 300);
+            },
+            reset() {
+                this.error = ''; this.success = false; this.withdrawnAmount = 0;
+                this.form = { holder_name: '', amount: '', pix_key: '', pix_type: '' };
             },
             submit() {
                 this.error = '';
+                this.success = false;
+
+                if (!lsGetSession()) {
+                    this.error = 'Faça login para solicitar saque.';
+                    return;
+                }
+
                 const amount = parseFloat(String(this.form.amount).replace(',', '.'));
-                if (!amount || amount < 30) { this.error = 'Valor mínimo: R$ 30,00.'; return; }
-                if (!this.form.pix_key || !this.form.pix_type) { this.error = 'Preencha a chave PIX e o tipo.'; return; }
+                if (!amount || amount < 30) {
+                    this.error = 'Valor mínimo de saque: R$ 30,00.';
+                    return;
+                }
+                if (!this.form.pix_key || !this.form.pix_type) {
+                    this.error = 'Preencha a chave PIX e o tipo.';
+                    return;
+                }
+
                 const bal = getBalance();
-                if (amount > bal) { this.error = 'Saldo insuficiente.'; return; }
-                setBalance(Math.max(0, bal - amount));
+                if (amount > bal) {
+                    this.error = 'Saldo insuficiente. Você tem R$ ' + bal.toFixed(2).replace('.', ',') +
+                                 ' e solicitou R$ ' + amount.toFixed(2).replace('.', ',') + '.';
+                    return;
+                }
+
+                setBalance(bal - amount);
                 refreshBalanceDisplay();
-                this.open = false;
-                setTimeout(() => { alert('Saque solicitado!'); location.reload(); }, 200);
+                this.withdrawnAmount = amount;
+                this.success = true;
             },
         };
     }
@@ -1340,7 +1326,7 @@
                     const t = text.toLowerCase();
                     let reply = 'Entendi! Um atendente humano vai continuar em instantes.';
                     if (/(dep[oó]sito|pix|recarga)/.test(t)) reply = 'Para depositar: clique em "Depositar", escolha o valor (mínimo R$ 20) e pague o QR Code.';
-                    else if (/(saque|sacar|retirar)/.test(t)) reply = 'Para sacar: mínimo R$ 30. Informe nome, valor, chave PIX e tipo.';
+                    else if (/(saque|sacar|retirar)/.test(t)) reply = 'Para sacar: clique em "Sacar" na topbar, informe nome, valor, chave PIX e tipo. Mínimo R$ 30.';
                     else if (/(b[oô]nus|promo)/.test(t)) reply = 'Para liberar o bônus: mude o idioma para Español, faça um depósito de R$ 29 e clique em Reclamar. O bônus de €109 vira R$ 603,86.';
                     this.messages.push({ role: 'assistant', content: reply });
                     this.loading = false; this.scroll();
@@ -1507,7 +1493,7 @@
                     <span x-text="loading ? 'Gerando QR...' : 'Depositar'">Depositar</span>
                 </button>
 
-                <p class="text-text-muted text-[10px] text-center">O valor entra no saldo após o PIX ser Aprovado.</p>
+                <p class="text-text-muted text-[10px] text-center">O valor entra no saldo após o pagamento PIX.</p>
             </div>
 
             <div x-show="step === 'qrcode'" class="p-5 text-center" style="display:none;">
@@ -1530,7 +1516,7 @@
 
                 <button @click="closeAndReload()" class="w-full bg-card-2 border border-subtle hover:border-brand-500 text-text text-sm font-bold py-2.5 rounded-full transition mb-2">Fechar</button>
 
-                <p class="text-text-muted text-[10px] mt-3">O valor é creditado após o PIX ser Aprovado.</p>
+                <p class="text-text-muted text-[10px] mt-3">O valor é creditado após Pagamento PIX.</p>
             </div>
         </div>
     </div>
@@ -1549,36 +1535,49 @@
             <div class="px-5 py-4 border-b border-subtle">
                 <div class="flex items-center justify-between mb-1">
                     <span class="bg-orange-500/15 text-orange-400 border border-orange-500/30 text-[11px] font-bold px-2 py-0.5 rounded uppercase">Saque PIX</span>
-                    <button @click="close()" class="p-1 text-text-dim hover:text-text"><svg class="w-5 h-5" viewBox="0 0 24 24" fill="currentColor"><path d="M6 4.5L19.5 18 18 19.5 4.5 6 6 4.5zM4.5 18L18 4.5 19.5 6 6 19.5 4.5 18z"></path></svg></button>
+                    <button @click="close()" class="p-1 text-text-dim hover:text-text">
+                        <svg class="w-5 h-5" viewBox="0 0 24 24" fill="currentColor"><path d="M6 4.5L19.5 18 18 19.5 4.5 6 6 4.5zM4.5 18L18 4.5 19.5 6 6 19.5 4.5 18z"></path></svg>
+                    </button>
                 </div>
                 <h3 class="text-xl font-bold">Solicitar saque</h3>
             </div>
 
-            <form x-show="step === 'form'" @submit.prevent="submit()" class="p-5 space-y-4">
+            <!-- FORMULÁRIO -->
+            <form x-show="!success" @submit.prevent="submit()" class="p-5 space-y-4">
+
+                <div class="bg-brand-500/10 border border-brand-500/30 rounded-lg p-3 flex items-center justify-between">
+                    <span class="text-text-dim text-xs font-bold uppercase tracking-wide">Disponível</span>
+                    <span class="text-brand-400 font-black text-lg">R$ <span x-text="availableLabel">0,00</span></span>
+                </div>
+
                 <div x-show="error" class="bg-red-500/10 border border-red-500/30 rounded-lg p-2.5 text-red-400 text-xs" x-text="error" style="display:none;"></div>
 
                 <div>
                     <label class="block text-xs font-bold text-text-dim mb-1.5 uppercase tracking-wide">Nome do titular</label>
-                    <input x-model="form.holder_name" type="text" placeholder="Nome completo" required class="w-full bg-card-2 border border-subtle rounded-lg px-3.5 py-2.5 text-sm placeholder:text-text-muted focus:border-brand-500 focus:outline-none focus:ring-2 focus:ring-brand-500/20 transition">
+                    <input x-model="form.holder_name" type="text" placeholder="Nome completo" required
+                           class="w-full bg-card-2 border border-subtle rounded-lg px-3.5 py-2.5 text-sm placeholder:text-text-muted focus:border-brand-500 focus:outline-none focus:ring-2 focus:ring-brand-500/20 transition">
                 </div>
 
                 <div>
                     <label class="block text-xs font-bold text-text-dim mb-1.5 uppercase tracking-wide">Valor do saque</label>
                     <div class="relative">
                         <span class="absolute left-3.5 top-1/2 -translate-y-1/2 text-text-dim text-sm font-bold">R$</span>
-                        <input x-model="form.amount" type="text" inputmode="decimal" placeholder="50,00" required class="w-full bg-card-2 border border-subtle rounded-lg pl-10 pr-3.5 py-2.5 text-sm font-bold focus:border-brand-500 focus:outline-none focus:ring-2 focus:ring-brand-500/20 transition">
+                        <input x-model="form.amount" type="text" inputmode="decimal" placeholder="50,00" required
+                               class="w-full bg-card-2 border border-subtle rounded-lg pl-10 pr-3.5 py-2.5 text-sm font-bold focus:border-brand-500 focus:outline-none focus:ring-2 focus:ring-brand-500/20 transition">
                     </div>
-                    <p class="text-xs text-text-muted mt-1">Disponível: <strong class="text-brand-400">R$ <span x-text="availableLabel">0,00</span></strong> · Mínimo R$ 30</p>
+                    <p class="text-xs text-text-muted mt-1">Mínimo R$ 30 · Máximo: o saldo disponível</p>
                 </div>
 
                 <div>
                     <label class="block text-xs font-bold text-text-dim mb-1.5 uppercase tracking-wide">Chave Pix</label>
-                    <input x-model="form.pix_key" type="text" placeholder="CPF, e-mail, telefone ou chave aleatória" required class="w-full bg-card-2 border border-subtle rounded-lg px-3.5 py-2.5 text-sm placeholder:text-text-muted focus:border-brand-500 focus:outline-none focus:ring-2 focus:ring-brand-500/20 transition">
+                    <input x-model="form.pix_key" type="text" placeholder="CPF, e-mail, telefone ou chave aleatória" required
+                           class="w-full bg-card-2 border border-subtle rounded-lg px-3.5 py-2.5 text-sm placeholder:text-text-muted focus:border-brand-500 focus:outline-none focus:ring-2 focus:ring-brand-500/20 transition">
                 </div>
 
                 <div>
-                    <label class="block text-xs font-bold text-text-dim mb-1.5 uppercase tracking-wide">Tipo</label>
-                    <select x-model="form.pix_type" required class="w-full bg-card-2 border border-subtle rounded-lg px-3.5 py-2.5 text-sm focus:border-brand-500 focus:outline-none focus:ring-2 focus:ring-brand-500/20 transition appearance-none cursor-pointer">
+                    <label class="block text-xs font-bold text-text-dim mb-1.5 uppercase tracking-wide">Tipo de chave</label>
+                    <select x-model="form.pix_type" required
+                            class="w-full bg-card-2 border border-subtle rounded-lg px-3.5 py-2.5 text-sm focus:border-brand-500 focus:outline-none focus:ring-2 focus:ring-brand-500/20 transition appearance-none cursor-pointer">
                         <option value="" disabled>Selecione o tipo</option>
                         <option value="document">CPF / CNPJ</option>
                         <option value="email">E-mail</option>
@@ -1593,6 +1592,23 @@
                     <span x-text="loading ? 'Processando...' : 'Confirmar saque'">Confirmar saque</span>
                 </button>
             </form>
+
+            <!-- SUCESSO -->
+            <div x-show="success" class="p-6 text-center" style="display:none;">
+                <div class="w-16 h-16 mx-auto mb-4 rounded-full bg-brand-500/15 flex items-center justify-center">
+                    <svg class="w-10 h-10 text-brand-500" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a10 10 0 100 20 10 10 0 000-20zm-1 14l-4-4 1.5-1.5L11 13l4.5-4.5L17 10l-6 6z"></path></svg>
+                </div>
+                <h4 class="text-text text-xl font-black mb-1">Saque aprovado!</h4>
+                <p class="text-text-dim text-sm mb-4">
+                    R$ <span class="text-brand-400 font-bold" x-text="withdrawnAmount.toFixed(2).replace('.', ',')"></span> foram debitados da sua conta.
+                </p>
+                <p class="text-text-muted text-xs mb-5">
+                    O valor será processado e enviado para sua chave PIX em até 30 minutos.
+                </p>
+                <button @click="close()" class="bg-brand-500 hover:bg-brand-600 text-white font-bold py-2.5 px-8 rounded-full transition">
+                    Fechar
+                </button>
+            </div>
         </div>
     </div>
 
