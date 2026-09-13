@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="pt-BR" class="dark">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0">
+<title>Jogando · Joga Que Passa</title>
+<link rel="icon" href="/assets/brand/favicon-7c6c0f7b.ico" type="image/png">
+<script src="https://cdn.tailwindcss.com"></script>
+<script>
+  tailwind.config = {
+    darkMode: 'class',
+    theme: { extend: {
+      colors: {
+        base:'#0e0a16', card:'#1a1622', 'card-2':'#1e1a26', subtle:'#2a2632',
+        brand:{400:'#9e76f7',500:'#8b5cf6',600:'#784fd4',700:'#6442b1'},
+        text:{DEFAULT:'#f1f5f9',dim:'#94a3b8',muted:'#64748b'},
+      },
+      fontFamily:{sans:['Inter','system-ui','sans-serif']},
+    }},
+  };
+</script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+  html,body{background:#0e0a16;color:#f1f5f9;margin:0;padding:0;height:100%;overflow:hidden;}
+  body{font-family:'Inter',system-ui,sans-serif;}
+  iframe{border:0;display:block;width:100%;height:100%;background:#000;}
+  .game-shell { position: fixed; inset: 0; display: flex; flex-direction: column; }
+  .game-topbar {
+    position: absolute; top: 0; left: 0; right: 0; z-index: 30;
+    padding: 10px 12px; display: flex; align-items: center; justify-content: space-between;
+    pointer-events: none;
+  }
+  .game-topbar > * { pointer-events: auto; }
+  .game-frame { flex: 1; position: relative; }
+  @supports (padding: env(safe-area-inset-top)) {
+    .game-topbar { padding-top: calc(10px + env(safe-area-inset-top)); }
+  }
+</style>
+</head>
+<body>
+
+<div id="loading" class="fixed inset-0 z-50 flex items-center justify-center bg-base">
+  <div class="text-center">
+    <div class="inline-block w-10 h-10 border-4 border-brand-500/30 border-t-brand-500 rounded-full animate-spin"></div>
+    <p class="text-text-dim text-xs mt-3">Verificando acesso...</p>
+  </div>
+</div>
+
+<div id="game-shell" class="game-shell" style="display:none;">
+  <div class="game-topbar">
+    <button id="btn-back" class="flex items-center gap-1.5 bg-black/70 hover:bg-black/90 text-white text-xs font-bold px-3 py-2 rounded-full transition border border-white/10">
+      <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M19 12H5M12 19l-7-7 7-7"/>
+      </svg>
+      Voltar
+    </button>
+
+    <button id="btn-fullscreen" class="flex items-center gap-1.5 bg-black/70 hover:bg-black/90 text-white text-xs font-bold px-3 py-2 rounded-full transition border border-white/10">
+      <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M8 3H5a2 2 0 0 0-2 2v3M21 8V5a2 2 0 0 0-2-2h-3M3 16v3a2 2 0 0 0 2 2h3M16 21h3a2 2 0 0 0 2-2v-3"/>
+      </svg>
+      <span class="hidden sm:inline">Tela cheia</span>
+    </button>
+  </div>
+
+  <div class="game-frame">
+    <iframe id="game-frame" allow="autoplay; fullscreen; clipboard-write" allowfullscreen></iframe>
+  </div>
+</div>
+
+<script>
+const LS_SESSION = 'jqp_session';
+const LS_BALANCE = 'jqp_balance';
+const MIN_BALANCE_TO_PLAY = 1;
+
+const GAME_MAP = {
+  '1543462': { url: 'https://public.pg-demo.com/demo/?gi=1543462&lang=pt', name: 'Fortune Rabbit' },
+  '1879752': { url: 'https://public.pg-demo.com/demo/?gi=1879752&lang=pt', name: 'Fortune Tiger' },
+  '126':     { url: 'https://public.pg-demo.com/demo/?gi=126&lang=pt',     name: 'Fortune Ox' },
+  '98':      { url: 'https://public.pg-demo.com/demo/?gi=98&lang=pt',      name: 'Fortune Mouse' },
+  '48':      { url: 'https://public.pg-demo.com/demo/?gi=48&lang=pt',      name: 'Fortune Dragon' },
+  '807':     { url: 'https://tadagaming.com/PlusTrial/807/pt-br',          name: 'Ganesha Gold' },
+};
+
+function getSession() {
+  try { return JSON.parse(localStorage.getItem(LS_SESSION) || 'null'); }
+  catch { return null; }
+}
+function getBalance() {
+  return parseFloat(localStorage.getItem(LS_BALANCE) || '0') || 0;
+}
+function fmtBRL(v) {
+  return 'R$ ' + Number(v).toFixed(2).replace('.', ',');
+}
+function getQueryParam(name) {
+  return new URLSearchParams(window.location.search).get(name) || '';
+}
+
+(function init() {
+  const gi   = getQueryParam('gi');
+  const name = getQueryParam('name') || 'Jogo';
+  const session = getSession();
+  const balance = getBalance();
+
+  if (!session) {
+    window.location.replace('/index.html?login=1');
+    return;
+  }
+
+  if (balance < MIN_BALANCE_TO_PLAY) {
+    mostrarTelaDeposito(name, balance);
+    return;
+  }
+
+  const game = GAME_MAP[gi];
+  if (!game) {
+    mostrarTelaErro('Jogo não encontrado.');
+    return;
+  }
+
+  document.getElementById('loading').style.display = 'none';
+  document.getElementById('game-shell').style.display = 'flex';
+  document.getElementById('game-frame').src = game.url;
+  document.title = game.name + ' · Joga Que Passa';
+
+  document.getElementById('btn-back').addEventListener('click', () => {
+    window.location.href = '/index.html';
+  });
+
+  document.getElementById('btn-fullscreen').addEventListener('click', () => {
+    const el = document.documentElement;
+    if (!document.fullscreenElement) {
+      (el.requestFullscreen || el.webkitRequestFullscreen || el.msRequestFullscreen).call(el);
+    } else {
+      (document.exitFullscreen || document.webkitExitFullscreen || document.msExitFullscreen).call(document);
+    }
+  });
+})();
+
+function mostrarTelaDeposito(name, balance) {
+  document.getElementById('loading').style.display = 'none';
+  const shell = document.getElementById('game-shell');
+  shell.style.display = 'flex';
+
+  shell.innerHTML = `
+    <div class="game-topbar">
+      <button id="btn-back-2" class="flex items-center gap-1.5 bg-black/70 hover:bg-black/90 text-white text-xs font-bold px-3 py-2 rounded-full transition border border-white/10">
+        <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M19 12H5M12 19l-7-7 7-7"/>
+        </svg>
+        Voltar
+      </button>
+      <div></div>
+    </div>
+
+    <div class="flex-1 flex items-center justify-center p-6">
+      <div class="max-w-sm w-full text-center">
+        <div class="mx-auto mb-4 w-20 h-20 rounded-full bg-brand-500/15 border border-brand-500/30 flex items-center justify-center text-brand-400">
+          <svg class="w-10 h-10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <rect x="3" y="8" width="18" height="12" rx="2"/>
+            <path d="M12 8v12M3 13h18"/>
+          </svg>
+        </div>
+        <h2 class="text-white text-xl font-black mb-1">Saldo insuficiente</h2>
+        <p class="text-text-dim text-sm mb-5">
+          Para jogar <strong class="text-white">${name}</strong>, você precisa ter saldo na conta.<br>
+          Faça um depósito via PIX para começar.
+        </p>
+        <button id="btn-deposit" class="w-full bg-brand-500 hover:bg-brand-600 text-white font-black py-3 rounded-full transition mb-2">
+          Depositar agora
+        </button>
+        <button id="btn-back-3" class="w-full bg-card-2 border border-subtle hover:border-brand-500 text-text text-sm font-bold py-2.5 rounded-full transition">
+          Voltar para a home
+        </button>
+      </div>
+    </div>
+  `;
+
+  document.getElementById('btn-back-2').addEventListener('click', () => window.location.href = '/index.html');
+  document.getElementById('btn-back-3').addEventListener('click', () => window.location.href = '/index.html');
+  document.getElementById('btn-deposit').addEventListener('click', () => {
+    window.location.href = '/index.html?deposit=1';
+  });
+}
+
+function mostrarTelaErro(msg) {
+  document.getElementById('loading').style.display = 'none';
+  const shell = document.getElementById('game-shell');
+  shell.style.display = 'flex';
+  shell.innerHTML = `
+    <div class="flex-1 flex items-center justify-center p-6 text-center">
+      <div>
+        <p class="text-white text-lg font-bold mb-2">Ops!</p>
+        <p class="text-text-dim text-sm mb-4">${msg}</p>
+        <a href="/index.html" class="inline-block bg-brand-500 hover:bg-brand-600 text-white font-bold px-6 py-2.5 rounded-full transition">Voltar</a>
+      </div>
+    </div>
+  `;
+}
+</script>
+
+</body>
+</html>
