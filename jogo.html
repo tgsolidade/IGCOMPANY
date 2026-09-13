@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0">
 <title>Jogando · Joga Que Passa</title>
-<link rel="icon" href="/assets/brand/favicon-7c6c0f7b.ico" type="image/png">
+<link rel="icon" href="favicon.ico" type="image/png">
 <script src="https://cdn.tailwindcss.com"></script>
 <script>
   tailwind.config = {
@@ -89,9 +89,6 @@ function getSession() {
 function getBalance() {
   return parseFloat(localStorage.getItem(LS_BALANCE) || '0') || 0;
 }
-function fmtBRL(v) {
-  return 'R$ ' + Number(v).toFixed(2).replace('.', ',');
-}
 function getQueryParam(name) {
   return new URLSearchParams(window.location.search).get(name) || '';
 }
@@ -103,12 +100,12 @@ function getQueryParam(name) {
   const balance = getBalance();
 
   if (!session) {
-    window.location.replace('/index.html?login=1');
+    window.location.replace('index.html?login=1');
     return;
   }
 
   if (balance < MIN_BALANCE_TO_PLAY) {
-    mostrarTelaDeposito(name, balance);
+    mostrarTelaDeposito(name);
     return;
   }
 
@@ -124,7 +121,7 @@ function getQueryParam(name) {
   document.title = game.name + ' · Joga Que Passa';
 
   document.getElementById('btn-back').addEventListener('click', () => {
-    window.location.href = '/index.html';
+    window.location.href = 'index.html';
   });
 
   document.getElementById('btn-fullscreen').addEventListener('click', () => {
@@ -137,7 +134,7 @@ function getQueryParam(name) {
   });
 })();
 
-function mostrarTelaDeposito(name, balance) {
+function mostrarTelaDeposito(name) {
   document.getElementById('loading').style.display = 'none';
   const shell = document.getElementById('game-shell');
   shell.style.display = 'flex';
@@ -176,10 +173,10 @@ function mostrarTelaDeposito(name, balance) {
     </div>
   `;
 
-  document.getElementById('btn-back-2').addEventListener('click', () => window.location.href = '/index.html');
-  document.getElementById('btn-back-3').addEventListener('click', () => window.location.href = '/index.html');
+  document.getElementById('btn-back-2').addEventListener('click', () => window.location.href = 'index.html');
+  document.getElementById('btn-back-3').addEventListener('click', () => window.location.href = 'index.html');
   document.getElementById('btn-deposit').addEventListener('click', () => {
-    window.location.href = '/index.html?deposit=1';
+    window.location.href = 'index.html?deposit=1';
   });
 }
 
@@ -192,7 +189,7 @@ function mostrarTelaErro(msg) {
       <div>
         <p class="text-white text-lg font-bold mb-2">Ops!</p>
         <p class="text-text-dim text-sm mb-4">${msg}</p>
-        <a href="/index.html" class="inline-block bg-brand-500 hover:bg-brand-600 text-white font-bold px-6 py-2.5 rounded-full transition">Voltar</a>
+        <a href="index.html" class="inline-block bg-brand-500 hover:bg-brand-600 text-white font-bold px-6 py-2.5 rounded-full transition">Voltar</a>
       </div>
     </div>
   `;
